@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: plugins
+  namespace: prow
+data:
+  plugins.yaml: |
+    plugins:
+      3scale-ops:
+      - approve
+      - assign
+      - blunderbuss
+      - cat
+      - dog
+      - help
+      - heart
+      - hold
+      - label
+      - lgtm
+      - trigger
+      - verify-owners
+      - wip
+      - yuks
