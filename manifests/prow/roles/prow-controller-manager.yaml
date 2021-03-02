@@ -1,0 +1,48 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: prow-controller-manager
+  namespace: prow
+rules:
+- apiGroups:
+  - prow.k8s.io
+  resources:
+  - prowjobs
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups:
+  - coordination.k8s.io
+  resourceNames:
+  - prow-controller-manager-leader-lock
+  resources:
+  - leases
+  verbs:
+  - get
+  - update
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - create
+- apiGroups:
+  - ''
+  resourceNames:
+  - prow-controller-manager-leader-lock
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - update
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  - events
+  verbs:
+  - create
