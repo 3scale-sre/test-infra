@@ -1,0 +1,23 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    external-dns.alpha.kubernetes.io/target: prow.internal.pro-base-ocp4.mgmt.3sca.net
+  labels:
+    type: internal
+  name: prow
+  namespace: prow
+spec:
+  rules:
+  - host: prow.mgmt.3sca.net
+    http:
+      paths:
+      - backend:
+          serviceName: deck
+          servicePort: http
+  tls:
+  - hosts:
+    - prow.mgmt.3sca.net
+    secretName: prow-ingress-tls
