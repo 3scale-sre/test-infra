@@ -1,0 +1,74 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: sinker
+  name: sinker
+  namespace: prow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sinker
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sinker
+    spec:
+      containers:
+      - args:
+        - '--config-path=/etc/config/config.yaml'
+        #- '--health-port=8081'
+        image: gcr.io/k8s-prow/sinker:v20210223-cdbc865141
+        livenessProbe:
+          failureThreshold: 3
+          tcpSocket:
+            port: 9090
+          # httpGet:
+          #   path: /healthz
+          #   port: 8081
+          #   scheme: HTTP
+          initialDelaySeconds: 25
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: sinker
+        ports:
+        # - containerPort: 8081
+        #   name: health
+        #   protocol: TCP
+        - containerPort: 6060
+          name: pprof
+          protocol: TCP
+        - containerPort: 9090
+          name: metrics
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          tcpSocket:
+            port: 9090
+          # httpGet:
+          #   path: /healthz
+          #   port: 8081
+          #   scheme: HTTP
+          initialDelaySeconds: 25
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 75m
+            memory: 128M
+          requests:
+            cpu: 25m
+            memory: 32M
+        volumeMounts:
+        - mountPath: /etc/config
+          name: config
+          readOnly: true
+      serviceAccountName: sinker
+      volumes:
+      - configMap:
+          name: config
+        name: config
