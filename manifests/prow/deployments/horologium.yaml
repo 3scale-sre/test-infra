@@ -1,0 +1,77 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: horologium
+  name: horologium
+  namespace: prow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: horologium
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: horologium
+    spec:
+      containers:
+      - args:
+        - '--dry-run=false'
+        - '--config-path=/etc/config/config.yaml'
+        image: gcr.io/k8s-prow/horologium:v20210223-cdbc865141
+        livenessProbe:
+          failureThreshold: 3
+          tcpSocket:
+            port: 6060
+          # httpGet:
+          #   path: /healthz
+          #   port: 8081
+          #   scheme: HTTP
+          initialDelaySeconds: 25
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: horologium
+        ports:
+        - containerPort: 8081
+          name: health
+          protocol: TCP
+        - containerPort: 6060
+          name: pprof
+          protocol: TCP
+        - containerPort: 9090
+          name: metrics
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          tcpSocket:
+            port: 6060
+          # httpGet:
+          #   path: /healthz
+          #   port: 8081
+          #   scheme: HTTP
+          initialDelaySeconds: 25
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        volumeMounts:
+        - mountPath: /etc/config
+          name: config
+          readOnly: true
+        resources:
+          limits:
+            cpu: 150m
+            memory: 256M
+          requests:
+            cpu: 50m
+            memory: 128M
+      serviceAccountName: horologium
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          name: config
+        name: config
