@@ -1,0 +1,70 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: tide
+  name: tide
+  namespace: prow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: tide
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: tide
+    spec:
+      containers:
+      - args:
+        - '--dry-run=false'
+        - '--config-path=/etc/config/config.yaml'
+        - '--github-token-path=/etc/github/token'
+        - '--github-endpoint=http://ghproxy'
+        - '--github-endpoint=https://api.github.com'
+        - '--github-graphql-endpoint=http://ghproxy/graphql'
+        - '--s3-credentials-file=/etc/s3-credentials/service-account.json'
+        - '--status-path=s3://3scale-mgmt-prow/tide/tide-status'
+        - '--history-uri=s3://3scale-mgmt-prow/tide/tide-history.json'
+        image: gcr.io/k8s-prow/tide:v20210223-cdbc865141
+        name: tide
+        ports:
+        - containerPort: 8888
+          name: http
+        resources:
+          limits:
+            cpu: 150m
+            memory: 128M
+          requests:
+            cpu: 50m
+            memory: 64M
+        volumeMounts:
+        - mountPath: /etc/github
+          name: github-token
+          readOnly: true
+        - mountPath: /etc/config
+          name: config
+          readOnly: true
+        - mountPath: /etc/s3-credentials
+          name: s3-credentials
+          readOnly: true
+      serviceAccountName: tide
+      volumes:
+      - name: github-token
+        secret:
+          secretName: github-tokens
+          items:
+            - key: oauth
+              path: token
+      - configMap:
+          name: config
+        name: config
+      - name: s3-credentials
+        secret:
+          secretName: s3-credentials
+          items:
+            - key: service-account.json
+              path: service-account.json

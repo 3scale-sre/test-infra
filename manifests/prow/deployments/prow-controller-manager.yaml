@@ -1,0 +1,88 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: prow-controller-manager
+  name: prow-controller-manager
+  namespace: prow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prow-controller-manager
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prow-controller-manager
+    spec:
+      containers:
+      - args:
+        - '--dry-run=false'
+        - '--config-path=/etc/config/config.yaml'
+        - '--github-token-path=/etc/github/token'
+        - '--github-endpoint=http://ghproxy'
+        - '--github-endpoint=https://api.github.com'
+        - '--enable-controller=plank'
+        #- '--health-port=8081'
+        image: gcr.io/k8s-prow/prow-controller-manager:v20210223-cdbc865141
+        livenessProbe:
+          failureThreshold: 3
+          tcpSocket:
+            port: 9090
+          # httpGet:
+          #   path: /healthz
+          #   port: 8081
+          #   scheme: HTTP
+          initialDelaySeconds: 25
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: prow-controller-manager
+        ports:
+        # - containerPort: 8081
+        #   name: health
+        #   protocol: TCP
+        - containerPort: 6060
+          name: pprof
+          protocol: TCP
+        - containerPort: 9090
+          name: metrics
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          tcpSocket:
+            port: 9090
+          # httpGet:
+          #   path: /healthz
+          #   port: 8081
+          #   scheme: HTTP
+          initialDelaySeconds: 25
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 150m
+            memory: 256M
+          requests:
+            cpu: 50m
+            memory: 128M
+        volumeMounts:
+        - mountPath: /etc/github
+          name: github-token
+          readOnly: true
+        - mountPath: /etc/config
+          name: config
+          readOnly: true
+      serviceAccountName: prow-controller-manager
+      volumes:
+      - name: github-token
+        secret:
+          items:
+          - key: oauth
+            path: token
+          secretName: github-tokens
+      - configMap:
+          name: config
+        name: config
