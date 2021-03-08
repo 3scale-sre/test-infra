@@ -85,10 +85,10 @@ spec:
         resources:
           limits:
             cpu: 250m
-            memory: 128M
+            memory: 384M
           requests:
             cpu: 100m
-            memory: 32M
+            memory: 128M
         volumeMounts:
         - mountPath: /etc/config
           name: config
