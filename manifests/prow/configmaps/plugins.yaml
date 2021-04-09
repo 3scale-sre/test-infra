@@ -18,7 +18,33 @@ data:
       - hold
       - label
       - lgtm
+      - require-matching-label
       - trigger
       - verify-owners
       - wip
       - yuks
+
+    require_matching_label:
+      - missing_label: needs-kind
+        org: 3scale-ops
+        issues: true
+        prs: true
+        regexp: ^kind/
+        missing_comment: |
+          There are no kind on this issue.
+          Please add an appropriate kind by using one of the following commands:
+            - `/kind bug`
+            - `/kind cleanup`
+            - `/kind documentation`
+            - `/kind feature`
+            - `/kind <kind-name>`
+      - missing_label: needs-priority
+        org: 3scale-ops
+        issues: true
+        prs: true
+        regexp: ^priority/
+      - missing_label: needs-size
+        org: 3scale-ops
+        issues: true
+        prs: true
+        regexp: ^size/
