@@ -1,0 +1,31 @@
+name: label-sync
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - 'hack/label_sync/labels.yaml'
+jobs:
+
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Save GitHub token
+      run: |
+        mkdir -p ./secrets
+        echo "${{ secrets.GH_TOKEN_LABEL_SYNC }}" > ./secrets/oauth
+      working-directory: ./hack/label_sync/
+
+    - name: Apply labels to 3scale-ops repos
+      working-directory: ./hack/label_sync/
+      run: make run-3scale-ops
+
+    - name: Apply labels to 3scale repos
+      working-directory: ./hack/label_sync/
+      run: make run-3scale
