@@ -19,6 +19,7 @@ data:
       - label
       - lgtm
       - require-matching-label
+      - retitle
       - trigger
       - verify-owners
       - wip
