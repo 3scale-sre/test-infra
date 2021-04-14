@@ -18,6 +18,7 @@ data:
       - hold
       - label
       - lgtm
+      - lifecycle
       - require-matching-label
       - retitle
       - trigger
