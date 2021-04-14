@@ -48,3 +48,20 @@ data:
         issues: true
         prs: true
         regexp: ^size/
+
+    approve:
+      - repos:
+          - 3scale
+          - 3scale-ops
+
+        commandHelpLink: "https://prow.mgmt.3sca.net/command-help"
+
+        # RequireSelfApproval requires PR authors to explicitly approve their PRs.
+        # Otherwise the plugin assumes the author of the PR approves the changes in the PR.
+        require_self_approval: true
+
+        # IgnoreReviewState causes the approve plugin to ignore the GitHub review state. Otherwise:
+        # * an APPROVE github review is equivalent to leaving an "/approve" message.
+        # * A REQUEST_CHANGES github review is equivalent to leaving an /approve cancel" message.
+        ignore_review_state: true
+
