@@ -126,6 +126,11 @@ repos:
         addedBy: prow
   3scale/3scale-saas:
     labels:
+    # Kind
+    - name: kind/deploy
+      description: Categorizes issue or PR as related to a deploy.
+      color: 3CAB6C
+      addedBy: anyone
     # Env
     - name: env/common
       description: Categorizes issue or PR as related shared across environments.
@@ -140,6 +145,20 @@ repos:
       description: Categorizes issue or PR as related to the pro-base environment.
       color: EE0000
   3scale/platform:
+    labels:
+    # Kind
+    - name: kind/maintenance
+      description: Categorizes issue or PR as related to maintenance tasks.
+      color: c7def8
+      addedBy: anyone
+    - name: kind/deploy
+      description: Categorizes issue or PR as related to a deploy.
+      color: 3CAB6C
+      addedBy: anyone
+    - name: kind/incident
+      description: Categorizes issue or PR as related to an incident, outage or postmortem.
+      color: b328d6
+      addedBy: anyone
     # Env
     - name: env/legacy
       description: Categorizes issue or PR as related to the legacy environment.
