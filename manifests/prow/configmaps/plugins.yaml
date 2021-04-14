@@ -102,6 +102,11 @@ data:
         issues: true
         prs: true
         regexp: ^size/
+      - missing_label: needs-env
+        org: 3scale/
+        issues: true
+        prs: true
+        regexp: ^env/
 
     approve:
       - repos:

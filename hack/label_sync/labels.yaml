@@ -96,6 +96,12 @@ default:
       target: prs
       prowPlugin: require-matching-label
       addedBy: prow
+    - name: needs-env
+      description: Indicates a PR or issue lacks a `env/foo` label and requires one.
+      color: ededed
+      target: both
+      prowPlugin: require-matching-label
+      addedBy: prow
 repos:
   3scale-ops/marin3r:
     labels:
@@ -112,3 +118,35 @@ repos:
         target: prs
         prowPlugin: trigger
         addedBy: prow
+  3scale/3scale-saas:
+    labels:
+    # Env
+    - name: env/common
+      description: Categorizes issue or PR as related shared across environments.
+      color: 34828C
+    - name: env/dev-eng
+      description: Categorizes issue or PR as related to the dev-env environment.
+      color: C2E0C6
+    - name: env/stg-saas
+      description: Categorizes issue or PR as related to the stg-saas environment.
+      color: FBCA04
+    - name: env/pro-base
+      description: Categorizes issue or PR as related to the pro-base environment.
+      color: EE0000
+  3scale/platform:
+    # Env
+    - name: env/legacy
+      description: Categorizes issue or PR as related to the legacy environment.
+      color: 835C3B
+    - name: env/common
+      description: Categorizes issue or PR as related shared across environments.
+      color: 34828C
+    - name: env/dev-eng
+      description: Categorizes issue or PR as related to the dev-env environment.
+      color: C2E0C6
+    - name: env/stg-saas
+      description: Categorizes issue or PR as related to the stg-saas environment.
+      color: FBCA04
+    - name: env/pro-base
+      description: Categorizes issue or PR as related to the pro-base environment.
+      color: EE0000
