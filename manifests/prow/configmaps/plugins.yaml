@@ -107,6 +107,11 @@ data:
         issues: true
         prs: true
         regexp: ^env/
+      - missing_label: needs-layer
+        org: 3scale/platform
+        issues: true
+        prs: true
+        regexp: ^layer/
 
     approve:
       - repos:

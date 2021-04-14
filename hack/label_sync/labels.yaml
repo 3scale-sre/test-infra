@@ -102,6 +102,12 @@ default:
       target: both
       prowPlugin: require-matching-label
       addedBy: prow
+    - name: needs-layer
+      description: Indicates a PR or issue lacks a `layer/foo` label and requires one.
+      color: ededed
+      target: prs
+      prowPlugin: require-matching-label
+      addedBy: prow
 repos:
   3scale-ops/marin3r:
     labels:
@@ -150,3 +156,25 @@ repos:
     - name: env/pro-base
       description: Categorizes issue or PR as related to the pro-base environment.
       color: EE0000
+    # Layer
+    - name: layer/application
+      description: Categorizes issue or PR as related to the application layer.
+      color: ffbf00
+    - name: layer/backend
+      description: Categorizes issue or PR as related to the backend layer.
+      color: ffbf00
+    - name: layer/monitoring
+      description: Categorizes issue or PR as related to the monitoring layer.
+      color: ffbf00
+    - name: layer/operations
+      description: Categorizes issue or PR as related to the operations layer.
+      color: ffbf00
+    - name: layer/routing
+      description: Categorizes issue or PR as related to the routing layer.
+      color: ffbf00
+    - name: layer/storage
+      description: Categorizes issue or PR as related to the storage layer.
+      color: ffbf00
+    - name: layer/system
+      description: Categorizes issue or PR as related to the system layer.
+      color: ffbf00
