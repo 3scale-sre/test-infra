@@ -71,6 +71,12 @@ default:
       description: Requires more than a week to complete the PR or the issue.
       color: 6f048d
       addedBy: humans
+    # Lifecycle
+    - name: lifecycle/frozen
+      description: Indicates that an issue or PR should not be auto-closed due to staleness.
+      color: d3e2f0
+      target: both
+      addedBy: anyone
     # Needs
     - name: needs-kind
       description: Indicates a PR or issue lacks a `kind/foo` label and requires one.
