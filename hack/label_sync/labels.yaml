@@ -1,0 +1,108 @@
+---
+default:
+  labels:
+    # Approval
+    - color: 15dd18
+      description: Indicates that a PR is ready to be merged.
+      name: lgtm
+      target: prs
+      prowPlugin: lgtm
+      addedBy: reviewers or members
+    - color: 0ffa16
+      description: Indicates a PR has been approved by an approver from all required OWNERS files.
+      name: approved
+      target: prs
+      prowPlugin: approve
+      addedBy: approvers
+    # Kind
+    - name: kind/bug
+      description: Categorizes issue or PR as related to a bug.
+      color: ee0701
+    - name: kind/cleanup
+      description: Categorizes issue or PR as related to cleaning up code, process, or technical debt.
+      color: c7def8
+    - name: kind/documentation
+      description: Categorizes issue or PR as related to documentation.
+      color: c7def8
+    - name: kind/feature
+      description: Categorizes issue or PR as related to a new feature.
+      color: c7def8
+    # Priority
+    - name: priority/awaiting-more-evidence
+      description: Lowest priority. Possibly useful, but not yet enough support to actually get it done.
+      color: fef2c0
+    - name: priority/backlog
+      description: Higher priority than priority/awaiting-more-evidence.
+      color: ffe699
+    - name: priority/blocked
+      description: Currently blocked by another task, issue or PR.
+      color: d93f0b
+    - name: priority/critical-urgent
+      description: Highest priority. Must be actively worked on as someone's top priority right now.
+      color: e60000
+    - name: priority/important-longterm
+      description: Important over the long term, but may not be staffed and/or may need multiple sprints to complete.
+      color: ffb3b3
+    - name: priority/important-soon
+      description: Must be staffed and worked on either currently, or very soon, ideally in time for the next sprint.
+      color: ff6666
+    # Size
+    - name: size/L
+      description: Requires few days to complete the PR or the issue.
+      color: 1a5587
+      addedBy: humans
+    - name: size/M
+      description: Requires about a day to complete the PR or the issue.
+      color: 216fb3
+      addedBy: humans
+    - name: size/S
+      description: Requires less than a day to complete the PR or the issue.
+      color: 93c2ea
+      addedBy: humans
+    - name: size/XL
+      description: Requires about a week to complete the PR or the issue.
+      color: 5a55a1
+      addedBy: humans
+    - name: size/XS
+      description: Requires less than an hour to complete the PR or the issue.
+      color: cceef5
+      addedBy: humans
+    - name: size/XXL
+      description: Requires more than a week to complete the PR or the issue.
+      color: 6f048d
+      addedBy: humans
+    # Needs
+    - name: needs-kind
+      description: Indicates a PR or issue lacks a `kind/foo` label and requires one.
+      color: ededed
+      target: prs
+      prowPlugin: require-matching-label
+      addedBy: prow
+    - name: needs-priority
+      description: Indicates a PR or issue lacks a `priority/foo` label and requires one.
+      color: ededed
+      target: prs
+      prowPlugin: require-matching-label
+      addedBy: prow
+    - name: needs-size
+      description: Indicates a PR or issue lacks a `size/foo` label and requires one.
+      color: ededed
+      target: prs
+      prowPlugin: require-matching-label
+      addedBy: prow
+repos:
+  3scale-ops/marin3r:
+    labels:
+      # Test
+      - color: b60205
+        description: Indicates a PR that requires an org member to verify it is safe to test.
+        name: needs-ok-to-test
+        target: prs
+        prowPlugin: trigger
+        addedBy: prow
+      - color: 15dd18
+        description: Indicates a non-member PR verified by an org member that is safe to test.
+        name: ok-to-test
+        target: prs
+        prowPlugin: trigger
+        addedBy: prow
