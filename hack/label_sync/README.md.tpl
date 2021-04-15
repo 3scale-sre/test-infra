@@ -61,6 +61,11 @@ This will ensure that:
   - Run `make docs` (to regenerate the labels README documentation)
 - After the PR is merged, a GitHub Action is responsible for syncing labels after a change (and daily)
 
+If the label needs to be seteable via prow command, using `/label foo/bar`,
+it needs to be added to the `additional_labels` list of the prow `label` plugin.
+That list is available in the `label` configuration section inside the
+[Prow plugins ConfigMap](https://github.com/3scale-ops/test-infra/blob/main/manifests/prow/configmaps/plugins.yaml).
+
 {{ range $labelData := . -}}
 ## Labels that apply to {{ $labelData.Description }}
 
