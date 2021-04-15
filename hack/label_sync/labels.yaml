@@ -111,19 +111,19 @@ default:
 repos:
   3scale-ops/marin3r:
     labels:
-      # Test
-      - color: b60205
-        description: Indicates a PR that requires an org member to verify it is safe to test.
-        name: needs-ok-to-test
-        target: prs
-        prowPlugin: trigger
-        addedBy: prow
-      - color: 15dd18
-        description: Indicates a non-member PR verified by an org member that is safe to test.
-        name: ok-to-test
-        target: prs
-        prowPlugin: trigger
-        addedBy: prow
+    # Test
+    - color: b60205
+      description: Indicates a PR that requires an org member to verify it is safe to test.
+      name: needs-ok-to-test
+      target: prs
+      prowPlugin: trigger
+      addedBy: prow
+    - color: 15dd18
+      description: Indicates a non-member PR verified by an org member that is safe to test.
+      name: ok-to-test
+      target: prs
+      prowPlugin: trigger
+      addedBy: prow
   3scale/3scale-saas:
     labels:
     # Kind
