@@ -18,59 +18,85 @@ default:
     - name: kind/bug
       description: Categorizes issue or PR as related to a bug.
       color: ee0701
+      target: both
+      addedBy: anyone
     - name: kind/cleanup
       description: Categorizes issue or PR as related to cleaning up code, process, or technical debt.
       color: c7def8
+      target: both
+      addedBy: anyone
     - name: kind/documentation
       description: Categorizes issue or PR as related to documentation.
       color: c7def8
+      target: both
+      addedBy: anyone
     - name: kind/feature
       description: Categorizes issue or PR as related to a new feature.
       color: c7def8
+      target: both
+      addedBy: anyone
     # Priority
     - name: priority/awaiting-more-evidence
       description: Lowest priority. Possibly useful, but not yet enough support to actually get it done.
       color: fef2c0
+      target: both
+      addedBy: anyone
     - name: priority/backlog
       description: Higher priority than priority/awaiting-more-evidence.
       color: ffe699
+      target: both
+      addedBy: anyone
     - name: priority/blocked
       description: Currently blocked by another task, issue or PR.
       color: d93f0b
+      target: both
+      addedBy: anyone
     - name: priority/critical-urgent
       description: Highest priority. Must be actively worked on as someone's top priority right now.
       color: e60000
+      target: both
+      addedBy: anyone
     - name: priority/important-longterm
       description: Important over the long term, but may not be staffed and/or may need multiple sprints to complete.
       color: ffb3b3
+      target: both
+      addedBy: anyone
     - name: priority/important-soon
       description: Must be staffed and worked on either currently, or very soon, ideally in time for the next sprint.
       color: ff6666
+      target: both
+      addedBy: anyone
     # Size
     - name: size/L
       description: Requires few days to complete the PR or the issue.
       color: 1a5587
-      addedBy: humans
+      target: both
+      addedBy: anyone
     - name: size/M
       description: Requires about a day to complete the PR or the issue.
       color: 216fb3
-      addedBy: humans
+      target: both
+      addedBy: anyone
     - name: size/S
       description: Requires less than a day to complete the PR or the issue.
       color: 93c2ea
-      addedBy: humans
+      target: both
+      addedBy: anyone
     - name: size/XL
       description: Requires about a week to complete the PR or the issue.
       color: 5a55a1
-      addedBy: humans
+      target: both
+      addedBy: anyone
     - name: size/XS
       description: Requires less than an hour to complete the PR or the issue.
       color: cceef5
-      addedBy: humans
+      target: both
+      addedBy: anyone
     - name: size/XXL
       description: Requires more than a week to complete the PR or the issue.
       color: 6f048d
-      addedBy: humans
+      target: both
+      addedBy: anyone
     # Lifecycle
     - name: lifecycle/frozen
       description: Indicates that an issue or PR should not be auto-closed due to staleness.
@@ -81,19 +107,19 @@ default:
     - name: needs-kind
       description: Indicates a PR or issue lacks a `kind/foo` label and requires one.
       color: ededed
-      target: prs
+      target: both
       prowPlugin: require-matching-label
       addedBy: prow
     - name: needs-priority
       description: Indicates a PR or issue lacks a `priority/foo` label and requires one.
       color: ededed
-      target: prs
+      target: both
       prowPlugin: require-matching-label
       addedBy: prow
     - name: needs-size
       description: Indicates a PR or issue lacks a `size/foo` label and requires one.
       color: ededed
-      target: prs
+      target: both
       prowPlugin: require-matching-label
       addedBy: prow
     - name: needs-env
@@ -105,7 +131,7 @@ default:
     - name: needs-layer
       description: Indicates a PR or issue lacks a `layer/foo` label and requires one.
       color: ededed
-      target: prs
+      target: both
       prowPlugin: require-matching-label
       addedBy: prow
 repos:
@@ -123,77 +149,113 @@ repos:
       name: ok-to-test
       target: prs
       prowPlugin: trigger
-      addedBy: prow
+      addedBy: anyone
   3scale/3scale-saas:
     labels:
     # Kind
     - name: kind/deploy
       description: Categorizes issue or PR as related to a deploy.
       color: 3CAB6C
+      target: both
       addedBy: anyone
     # Env
     - name: env/common
       description: Categorizes issue or PR as related shared across environments.
       color: 34828C
+      target: both
+      addedBy: anyone
     - name: env/dev-eng
       description: Categorizes issue or PR as related to the dev-env environment.
       color: C2E0C6
+      target: both
+      addedBy: anyone
     - name: env/stg-saas
       description: Categorizes issue or PR as related to the stg-saas environment.
       color: FBCA04
+      target: both
+      addedBy: anyone
     - name: env/pro-base
       description: Categorizes issue or PR as related to the pro-base environment.
       color: EE0000
+      target: both
+      addedBy: anyone
   3scale/platform:
     labels:
     # Kind
     - name: kind/maintenance
       description: Categorizes issue or PR as related to maintenance tasks.
       color: c7def8
+      target: both
       addedBy: anyone
     - name: kind/deploy
       description: Categorizes issue or PR as related to a deploy.
       color: 3CAB6C
+      target: both
       addedBy: anyone
     - name: kind/incident
       description: Categorizes issue or PR as related to an incident, outage or postmortem.
       color: b328d6
+      target: both
       addedBy: anyone
     # Env
     - name: env/legacy
       description: Categorizes issue or PR as related to the legacy environment.
       color: 835C3B
+      target: both
+      addedBy: anyone
     - name: env/common
       description: Categorizes issue or PR as related shared across environments.
       color: 34828C
+      target: both
+      addedBy: anyone
     - name: env/dev-eng
       description: Categorizes issue or PR as related to the dev-env environment.
       color: C2E0C6
+      target: both
+      addedBy: anyone
     - name: env/stg-saas
       description: Categorizes issue or PR as related to the stg-saas environment.
       color: FBCA04
+      target: both
+      addedBy: anyone
     - name: env/pro-base
       description: Categorizes issue or PR as related to the pro-base environment.
       color: EE0000
+      target: both
+      addedBy: anyone
     # Layer
     - name: layer/application
       description: Categorizes issue or PR as related to the application layer.
       color: ffbf00
+      target: both
+      addedBy: anyone
     - name: layer/backend
       description: Categorizes issue or PR as related to the backend layer.
       color: ffbf00
+      target: both
+      addedBy: anyone
     - name: layer/monitoring
       description: Categorizes issue or PR as related to the monitoring layer.
       color: ffbf00
+      target: both
+      addedBy: anyone
     - name: layer/operations
       description: Categorizes issue or PR as related to the operations layer.
       color: ffbf00
+      target: both
+      addedBy: anyone
     - name: layer/routing
       description: Categorizes issue or PR as related to the routing layer.
       color: ffbf00
+      target: both
+      addedBy: anyone
     - name: layer/storage
       description: Categorizes issue or PR as related to the storage layer.
       color: ffbf00
+      target: both
+      addedBy: anyone
     - name: layer/system
       description: Categorizes issue or PR as related to the system layer.
       color: ffbf00
+      target: both
+      addedBy: anyone
