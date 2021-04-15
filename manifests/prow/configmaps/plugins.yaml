@@ -121,6 +121,27 @@ data:
         prs: true
         regexp: ^layer/
 
+    label:
+      additional_labels:
+        - size/xs
+        - size/s
+        - size/m
+        - size/l
+        - size/xl
+        - size/xxl
+        - env/legacy
+        - env/common
+        - env/dev-eng
+        - env/stg-saas
+        - env/pro-base
+        - layer/application
+        - layer/backend
+        - layer/monitoring
+        - layer/operations
+        - layer/routing
+        - layer/storage
+        - layer/system
+
     approve:
       - repos:
           - 3scale
