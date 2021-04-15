@@ -27,6 +27,7 @@ data:
       - shrug
       - trigger
       - verify-owners
+      - welcome
       - wip
       - yuks
       3scale/3scale-saas:
