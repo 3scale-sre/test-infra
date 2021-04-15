@@ -24,6 +24,7 @@ data:
       - lifecycle
       - require-matching-label
       - retitle
+      - shrug
       - trigger
       - verify-owners
       - wip
