@@ -12,6 +12,7 @@ data:
       - assign
       - blunderbuss
       - branchcleaner
+      - mergecommitblocker
       - cat
       - dog
       - help
@@ -31,6 +32,7 @@ data:
       - approve
       - assign
       - blunderbuss
+      - mergecommitblocker
       - help
       - hold
       - invalidcommitmsg
@@ -46,6 +48,7 @@ data:
       - approve
       - assign
       - blunderbuss
+      - mergecommitblocker
       - help
       - hold
       - invalidcommitmsg
