@@ -17,6 +17,7 @@ data:
       - help
       - heart
       - hold
+      - invalidcommitmsg
       - label
       - lgtm
       - lifecycle
@@ -32,6 +33,7 @@ data:
       - blunderbuss
       - help
       - hold
+      - invalidcommitmsg
       - label
       - lgtm
       - lifecycle
@@ -46,6 +48,7 @@ data:
       - blunderbuss
       - help
       - hold
+      - invalidcommitmsg
       - label
       - lgtm
       - lifecycle
