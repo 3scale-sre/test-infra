@@ -115,11 +115,6 @@ data:
         issues: true
         prs: true
         regexp: ^env/
-      - missing_label: needs-layer
-        org: 3scale/platform
-        issues: true
-        prs: true
-        regexp: ^layer/
 
     label:
       additional_labels:
@@ -134,13 +129,6 @@ data:
         - env/dev-eng
         - env/stg-saas
         - env/pro-base
-        - layer/application
-        - layer/backend
-        - layer/monitoring
-        - layer/operations
-        - layer/routing
-        - layer/storage
-        - layer/system
 
     approve:
       - repos:

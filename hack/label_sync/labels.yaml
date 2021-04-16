@@ -146,6 +146,7 @@ default:
       target: both
       prowPlugin: require-matching-label
       addedBy: prow
+      deleteAfter: 2021-04-15T00:00:00Z
     # Working groups
     - name: wg/sre
       description: Categorizes issue or PR as related to the SRE working group.
@@ -267,38 +268,21 @@ repos:
       target: both
       addedBy: anyone
     # Layer
-    - name: layer/application
-      description: Categorizes issue or PR as related to the application layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-    - name: layer/backend
-      description: Categorizes issue or PR as related to the backend layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-    - name: layer/monitoring
-      description: Categorizes issue or PR as related to the monitoring layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-    - name: layer/operations
-      description: Categorizes issue or PR as related to the operations layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-    - name: layer/routing
-      description: Categorizes issue or PR as related to the routing layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
     - name: layer/storage
       description: Categorizes issue or PR as related to the storage layer.
       color: ffbf00
       target: both
       addedBy: anyone
-    - name: layer/system
-      description: Categorizes issue or PR as related to the system layer.
+      deleteAfter: 2021-04-15T00:00:00Z
+    - name: layer/application
+      description: Categorizes issue or PR as related to the application layer.
       color: ffbf00
       target: both
       addedBy: anyone
+      deleteAfter: 2021-04-15T00:00:00Z
+    - name: layer/routing
+      description: Categorizes issue or PR as related to the routing layer.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+      deleteAfter: 2021-04-15T00:00:00Z
