@@ -40,6 +40,13 @@ default:
       color: c7def8
       target: both
       addedBy: anyone
+    - name: kind/monitoring
+      description: Categorizes issue or PR as related to monitoring.
+      color: c7def8
+      target: both
+      addedBy: anyone
+      previously:
+      - name: layer/monitoring
     # Priority
     - name: priority/awaiting-more-evidence
       description: Lowest priority. Possibly useful, but not yet enough support to actually get it done.
@@ -139,6 +146,37 @@ default:
       target: both
       prowPlugin: require-matching-label
       addedBy: prow
+    # Working groups
+    - name: wg/sre
+      description: Categorizes issue or PR as related to the SRE working group.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+      previously:
+      - name: layer/operations
+orgs:
+  3scale:
+    labels:
+    # Working groups
+    - name: wg/apicast
+      description: Categorizes issue or PR as related to the apicast working group.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+    - name: wg/backend
+      description: Categorizes issue or PR as related to the backend working group.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+      previously:
+      - name: layer/backend
+    - name: wg/system
+      description: Categorizes issue or PR as related to the system working group.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+      previously:
+      - name: layer/system
 repos:
   3scale-ops/marin3r:
     labels:
