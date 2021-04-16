@@ -111,7 +111,7 @@ data:
         prs: true
         regexp: ^size/
       - missing_label: needs-env
-        org: 3scale/
+        org: 3scale
         issues: true
         prs: true
         regexp: ^env/
