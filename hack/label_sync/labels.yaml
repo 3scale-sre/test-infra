@@ -20,6 +20,8 @@ default:
       color: ee0701
       target: both
       addedBy: anyone
+      previously:
+      - name: bug
     - name: kind/cleanup
       description: Categorizes issue or PR as related to cleaning up code, process, or technical debt.
       color: c7def8
@@ -30,11 +32,27 @@ default:
       color: c7def8
       target: both
       addedBy: anyone
+      previously:
+      - name: documentation
     - name: kind/feature
       description: Categorizes issue or PR as related to a new feature.
       color: c7def8
       target: both
       addedBy: anyone
+      previously:
+      - name: enhancement
+    - name: kind/automation
+      description: Categorizes issue or PR as related to CI/CD or an automation.
+      color: c7def8
+      target: both
+      addedBy: anyone
+    - name: kind/monitoring
+      description: Categorizes issue or PR as related to monitoring.
+      color: c7def8
+      target: both
+      addedBy: anyone
+      previously:
+      - name: layer/monitoring
     # Priority
     - name: priority/awaiting-more-evidence
       description: Lowest priority. Possibly useful, but not yet enough support to actually get it done.
@@ -71,38 +89,88 @@ default:
       description: Requires few days to complete the PR or the issue.
       color: 1a5587
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/M
       description: Requires about a day to complete the PR or the issue.
       color: 216fb3
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/S
       description: Requires less than a day to complete the PR or the issue.
       color: 93c2ea
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/XL
       description: Requires about a week to complete the PR or the issue.
       color: 5a55a1
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/XS
       description: Requires less than an hour to complete the PR or the issue.
       color: cceef5
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/XXL
       description: Requires more than a week to complete the PR or the issue.
       color: 6f048d
       target: both
-      addedBy: anyone
+      addedBy: humans
     # Lifecycle
     - name: lifecycle/frozen
       description: Indicates that an issue or PR should not be auto-closed due to staleness.
       color: d3e2f0
       target: both
       addedBy: anyone
+    # Triage
+    - color: 8fc951
+      description: Indicates an issue or PR is ready to be actively worked on.
+      name: triage/accepted
+      target: both
+      prowPlugin: label
+      addedBy: org members
+    - color: d455d0
+      description: Indicates an issue is a duplicate of other open issue.
+      name: triage/duplicate
+      target: both
+      previously:
+      - name: duplicate
+      addedBy: humans
+    - color: d455d0
+      description: Indicates an issue needs more information in order to work on it.
+      name: triage/needs-information
+      target: both
+      addedBy: humans
+    - color: d455d0
+      description: Indicates an issue can not be reproduced as described.
+      name: triage/not-reproducible
+      target: both
+      addedBy: humans
+    - color: ffffff
+      description: Indicates an issue that can not or will not be resolved.
+      name: triage/unresolved
+      previously:
+      - name: invalid
+      - name: wontfix
+      target: both
+      addedBy: humans
+    # Github
+    - color: 7057ff
+      description: Denotes an issue ready for a new contributor.
+      name: 'good first issue'
+      target: issues
+      prowPlugin: help
+      addedBy: anyone
+    - color: 006b75
+      description: Denotes an issue that needs help from a contributor.
+      name: 'help wanted'
+      target: issues
+      prowPlugin: help
+      addedBy: anyone
+    - color: d455d0
+      description: Categorizes issue as a support question.
+      name: question
+      target: issues
+      addedBy: human
     # Needs
     - name: needs-kind
       description: Indicates a PR or issue lacks a `kind/foo` label and requires one.
@@ -134,6 +202,38 @@ default:
       target: both
       prowPlugin: require-matching-label
       addedBy: prow
+      deleteAfter: 2021-04-15T00:00:00Z
+    # Working groups
+    - name: wg/sre
+      description: Categorizes issue or PR as related to the SRE working group.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+      previously:
+      - name: layer/operations
+orgs:
+  3scale:
+    labels:
+    # Working groups
+    - name: wg/apicast
+      description: Categorizes issue or PR as related to the apicast working group.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+    - name: wg/backend
+      description: Categorizes issue or PR as related to the backend working group.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+      previously:
+      - name: layer/backend
+    - name: wg/system
+      description: Categorizes issue or PR as related to the system working group.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+      previously:
+      - name: layer/system
 repos:
   3scale-ops/marin3r:
     labels:
@@ -224,38 +324,21 @@ repos:
       target: both
       addedBy: anyone
     # Layer
-    - name: layer/application
-      description: Categorizes issue or PR as related to the application layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-    - name: layer/backend
-      description: Categorizes issue or PR as related to the backend layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-    - name: layer/monitoring
-      description: Categorizes issue or PR as related to the monitoring layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-    - name: layer/operations
-      description: Categorizes issue or PR as related to the operations layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-    - name: layer/routing
-      description: Categorizes issue or PR as related to the routing layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
     - name: layer/storage
       description: Categorizes issue or PR as related to the storage layer.
       color: ffbf00
       target: both
       addedBy: anyone
-    - name: layer/system
-      description: Categorizes issue or PR as related to the system layer.
+      deleteAfter: 2021-04-15T00:00:00Z
+    - name: layer/application
+      description: Categorizes issue or PR as related to the application layer.
       color: ffbf00
       target: both
       addedBy: anyone
+      deleteAfter: 2021-04-15T00:00:00Z
+    - name: layer/routing
+      description: Categorizes issue or PR as related to the routing layer.
+      color: ffbf00
+      target: both
+      addedBy: anyone
+      deleteAfter: 2021-04-15T00:00:00Z

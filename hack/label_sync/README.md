@@ -11,6 +11,7 @@
 - [Labels that apply to all repos, for both issues and PRs](#labels-that-apply-to-all-repos-for-both-issues-and-prs)
 - [Labels that apply to all repos, only for issues](#labels-that-apply-to-all-repos-only-for-issues)
 - [Labels that apply to all repos, only for PRs](#labels-that-apply-to-all-repos-only-for-prs)
+- [Labels that apply to all repos in 3scale, for both issues and PRs](#labels-that-apply-to-all-repos-in-3scale-for-both-issues-and-prs)
 - [Labels that apply to 3scale-ops/marin3r, only for PRs](#labels-that-apply-to-3scale-opsmarin3r-only-for-prs)
 - [Labels that apply to 3scale/3scale-saas, for both issues and PRs](#labels-that-apply-to-3scale3scale-saas-for-both-issues-and-prs)
 - [Labels that apply to 3scale/platform, for both issues and PRs](#labels-that-apply-to-3scaleplatform-for-both-issues-and-prs)
@@ -74,14 +75,16 @@ That list is available in the `label` configuration section inside the
 
 | Name | Description | Added By | Prow Plugin |
 | ---- | ----------- | -------- | ----------- |
-| <a id="kind/bug" href="#kind/bug">`kind/bug`</a> | Categorizes issue or PR as related to a bug.| anyone | |
+| <a id="kind/automation" href="#kind/automation">`kind/automation`</a> | Categorizes issue or PR as related to CI/CD or an automation.| anyone | |
+| <a id="kind/bug" href="#kind/bug">`kind/bug`</a> | Categorizes issue or PR as related to a bug. <br><br> This was previously `bug`, | anyone | |
 | <a id="kind/cleanup" href="#kind/cleanup">`kind/cleanup`</a> | Categorizes issue or PR as related to cleaning up code, process, or technical debt.| anyone | |
-| <a id="kind/documentation" href="#kind/documentation">`kind/documentation`</a> | Categorizes issue or PR as related to documentation.| anyone | |
-| <a id="kind/feature" href="#kind/feature">`kind/feature`</a> | Categorizes issue or PR as related to a new feature.| anyone | |
+| <a id="kind/documentation" href="#kind/documentation">`kind/documentation`</a> | Categorizes issue or PR as related to documentation. <br><br> This was previously `documentation`, | anyone | |
+| <a id="kind/feature" href="#kind/feature">`kind/feature`</a> | Categorizes issue or PR as related to a new feature. <br><br> This was previously `enhancement`, | anyone | |
+| <a id="kind/monitoring" href="#kind/monitoring">`kind/monitoring`</a> | Categorizes issue or PR as related to monitoring. <br><br> This was previously `layer/monitoring`, | anyone | |
 | <a id="lifecycle/frozen" href="#lifecycle/frozen">`lifecycle/frozen`</a> | Indicates that an issue or PR should not be auto-closed due to staleness.| anyone | |
 | <a id="needs-env" href="#needs-env">`needs-env`</a> | Indicates a PR or issue lacks a `env/foo` label and requires one.| prow |  [require-matching-label](https://git.k8s.io/test-infra/prow/plugins/require-matching-label) |
 | <a id="needs-kind" href="#needs-kind">`needs-kind`</a> | Indicates a PR or issue lacks a `kind/foo` label and requires one.| prow |  [require-matching-label](https://git.k8s.io/test-infra/prow/plugins/require-matching-label) |
-| <a id="needs-layer" href="#needs-layer">`needs-layer`</a> | Indicates a PR or issue lacks a `layer/foo` label and requires one.| prow |  [require-matching-label](https://git.k8s.io/test-infra/prow/plugins/require-matching-label) |
+| <a id="needs-layer" href="#needs-layer">`needs-layer`</a> | REMOVING. This will be deleted after 2021-04-15 00:00:00 +0000 UTC <br><br> Indicates a PR or issue lacks a `layer/foo` label and requires one.| prow |  [require-matching-label](https://git.k8s.io/test-infra/prow/plugins/require-matching-label) |
 | <a id="needs-priority" href="#needs-priority">`needs-priority`</a> | Indicates a PR or issue lacks a `priority/foo` label and requires one.| prow |  [require-matching-label](https://git.k8s.io/test-infra/prow/plugins/require-matching-label) |
 | <a id="needs-size" href="#needs-size">`needs-size`</a> | Indicates a PR or issue lacks a `size/foo` label and requires one.| prow |  [require-matching-label](https://git.k8s.io/test-infra/prow/plugins/require-matching-label) |
 | <a id="priority/awaiting-more-evidence" href="#priority/awaiting-more-evidence">`priority/awaiting-more-evidence`</a> | Lowest priority. Possibly useful, but not yet enough support to actually get it done.| anyone | |
@@ -90,17 +93,26 @@ That list is available in the `label` configuration section inside the
 | <a id="priority/critical-urgent" href="#priority/critical-urgent">`priority/critical-urgent`</a> | Highest priority. Must be actively worked on as someone's top priority right now.| anyone | |
 | <a id="priority/important-longterm" href="#priority/important-longterm">`priority/important-longterm`</a> | Important over the long term, but may not be staffed and/or may need multiple sprints to complete.| anyone | |
 | <a id="priority/important-soon" href="#priority/important-soon">`priority/important-soon`</a> | Must be staffed and worked on either currently, or very soon, ideally in time for the next sprint.| anyone | |
-| <a id="size/L" href="#size/L">`size/L`</a> | Requires few days to complete the PR or the issue.| anyone | |
-| <a id="size/M" href="#size/M">`size/M`</a> | Requires about a day to complete the PR or the issue.| anyone | |
-| <a id="size/S" href="#size/S">`size/S`</a> | Requires less than a day to complete the PR or the issue.| anyone | |
-| <a id="size/XL" href="#size/XL">`size/XL`</a> | Requires about a week to complete the PR or the issue.| anyone | |
-| <a id="size/XS" href="#size/XS">`size/XS`</a> | Requires less than an hour to complete the PR or the issue.| anyone | |
-| <a id="size/XXL" href="#size/XXL">`size/XXL`</a> | Requires more than a week to complete the PR or the issue.| anyone | |
+| <a id="size/L" href="#size/L">`size/L`</a> | Requires few days to complete the PR or the issue.| humans | |
+| <a id="size/M" href="#size/M">`size/M`</a> | Requires about a day to complete the PR or the issue.| humans | |
+| <a id="size/S" href="#size/S">`size/S`</a> | Requires less than a day to complete the PR or the issue.| humans | |
+| <a id="size/XL" href="#size/XL">`size/XL`</a> | Requires about a week to complete the PR or the issue.| humans | |
+| <a id="size/XS" href="#size/XS">`size/XS`</a> | Requires less than an hour to complete the PR or the issue.| humans | |
+| <a id="size/XXL" href="#size/XXL">`size/XXL`</a> | Requires more than a week to complete the PR or the issue.| humans | |
+| <a id="triage/accepted" href="#triage/accepted">`triage/accepted`</a> | Indicates an issue or PR is ready to be actively worked on.| org members |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
+| <a id="triage/duplicate" href="#triage/duplicate">`triage/duplicate`</a> | Indicates an issue is a duplicate of other open issue. <br><br> This was previously `duplicate`, | humans | |
+| <a id="triage/needs-information" href="#triage/needs-information">`triage/needs-information`</a> | Indicates an issue needs more information in order to work on it.| humans | |
+| <a id="triage/not-reproducible" href="#triage/not-reproducible">`triage/not-reproducible`</a> | Indicates an issue can not be reproduced as described.| humans | |
+| <a id="triage/unresolved" href="#triage/unresolved">`triage/unresolved`</a> | Indicates an issue that can not or will not be resolved. <br><br> This was previously `invalid`, `wontfix`, | humans | |
+| <a id="wg/sre" href="#wg/sre">`wg/sre`</a> | Categorizes issue or PR as related to the SRE working group. <br><br> This was previously `layer/operations`, | anyone | |
 
 ## Labels that apply to all repos, only for issues
 
 | Name | Description | Added By | Prow Plugin |
 | ---- | ----------- | -------- | ----------- |
+| <a id="good first issue" href="#good first issue">`good first issue`</a> | Denotes an issue ready for a new contributor.| anyone |  [help](https://git.k8s.io/test-infra/prow/plugins/help) |
+| <a id="help wanted" href="#help wanted">`help wanted`</a> | Denotes an issue that needs help from a contributor.| anyone |  [help](https://git.k8s.io/test-infra/prow/plugins/help) |
+| <a id="question" href="#question">`question`</a> | Categorizes issue as a support question.| human | |
 
 ## Labels that apply to all repos, only for PRs
 
@@ -108,6 +120,14 @@ That list is available in the `label` configuration section inside the
 | ---- | ----------- | -------- | ----------- |
 | <a id="approved" href="#approved">`approved`</a> | Indicates a PR has been approved by an approver from all required OWNERS files.| approvers |  [approve](https://git.k8s.io/test-infra/prow/plugins/approve) |
 | <a id="lgtm" href="#lgtm">`lgtm`</a> | Indicates that a PR is ready to be merged.| reviewers or members |  [lgtm](https://git.k8s.io/test-infra/prow/plugins/lgtm) |
+
+## Labels that apply to all repos in 3scale, for both issues and PRs
+
+| Name | Description | Added By | Prow Plugin |
+| ---- | ----------- | -------- | ----------- |
+| <a id="wg/apicast" href="#wg/apicast">`wg/apicast`</a> | Categorizes issue or PR as related to the apicast working group.| anyone | |
+| <a id="wg/backend" href="#wg/backend">`wg/backend`</a> | Categorizes issue or PR as related to the backend working group. <br><br> This was previously `layer/backend`, | anyone | |
+| <a id="wg/system" href="#wg/system">`wg/system`</a> | Categorizes issue or PR as related to the system working group. <br><br> This was previously `layer/system`, | anyone | |
 
 ## Labels that apply to 3scale-ops/marin3r, only for PRs
 
@@ -138,11 +158,7 @@ That list is available in the `label` configuration section inside the
 | <a id="kind/deploy" href="#kind/deploy">`kind/deploy`</a> | Categorizes issue or PR as related to a deploy.| anyone | |
 | <a id="kind/incident" href="#kind/incident">`kind/incident`</a> | Categorizes issue or PR as related to an incident, outage or postmortem.| anyone | |
 | <a id="kind/maintenance" href="#kind/maintenance">`kind/maintenance`</a> | Categorizes issue or PR as related to maintenance tasks.| anyone | |
-| <a id="layer/application" href="#layer/application">`layer/application`</a> | Categorizes issue or PR as related to the application layer.| anyone | |
-| <a id="layer/backend" href="#layer/backend">`layer/backend`</a> | Categorizes issue or PR as related to the backend layer.| anyone | |
-| <a id="layer/monitoring" href="#layer/monitoring">`layer/monitoring`</a> | Categorizes issue or PR as related to the monitoring layer.| anyone | |
-| <a id="layer/operations" href="#layer/operations">`layer/operations`</a> | Categorizes issue or PR as related to the operations layer.| anyone | |
-| <a id="layer/routing" href="#layer/routing">`layer/routing`</a> | Categorizes issue or PR as related to the routing layer.| anyone | |
-| <a id="layer/storage" href="#layer/storage">`layer/storage`</a> | Categorizes issue or PR as related to the storage layer.| anyone | |
-| <a id="layer/system" href="#layer/system">`layer/system`</a> | Categorizes issue or PR as related to the system layer.| anyone | |
+| <a id="layer/application" href="#layer/application">`layer/application`</a> | REMOVING. This will be deleted after 2021-04-15 00:00:00 +0000 UTC <br><br> Categorizes issue or PR as related to the application layer.| anyone | |
+| <a id="layer/routing" href="#layer/routing">`layer/routing`</a> | REMOVING. This will be deleted after 2021-04-15 00:00:00 +0000 UTC <br><br> Categorizes issue or PR as related to the routing layer.| anyone | |
+| <a id="layer/storage" href="#layer/storage">`layer/storage`</a> | REMOVING. This will be deleted after 2021-04-15 00:00:00 +0000 UTC <br><br> Categorizes issue or PR as related to the storage layer.| anyone | |
 
