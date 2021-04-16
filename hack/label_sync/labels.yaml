@@ -71,32 +71,32 @@ default:
       description: Requires few days to complete the PR or the issue.
       color: 1a5587
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/M
       description: Requires about a day to complete the PR or the issue.
       color: 216fb3
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/S
       description: Requires less than a day to complete the PR or the issue.
       color: 93c2ea
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/XL
       description: Requires about a week to complete the PR or the issue.
       color: 5a55a1
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/XS
       description: Requires less than an hour to complete the PR or the issue.
       color: cceef5
       target: both
-      addedBy: anyone
+      addedBy: humans
     - name: size/XXL
       description: Requires more than a week to complete the PR or the issue.
       color: 6f048d
       target: both
-      addedBy: anyone
+      addedBy: humans
     # Lifecycle
     - name: lifecycle/frozen
       description: Indicates that an issue or PR should not be auto-closed due to staleness.
