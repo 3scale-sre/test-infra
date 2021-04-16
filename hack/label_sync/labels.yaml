@@ -20,6 +20,8 @@ default:
       color: ee0701
       target: both
       addedBy: anyone
+      previously:
+      - name: bug
     - name: kind/cleanup
       description: Categorizes issue or PR as related to cleaning up code, process, or technical debt.
       color: c7def8
@@ -30,11 +32,15 @@ default:
       color: c7def8
       target: both
       addedBy: anyone
+      previously:
+      - name: documentation
     - name: kind/feature
       description: Categorizes issue or PR as related to a new feature.
       color: c7def8
       target: both
       addedBy: anyone
+      previously:
+      - name: enhancement
     - name: kind/automation
       description: Categorizes issue or PR as related to CI/CD or an automation.
       color: c7def8
@@ -147,6 +153,24 @@ default:
       - name: wontfix
       target: both
       addedBy: humans
+    # Github
+    - color: 7057ff
+      description: Denotes an issue ready for a new contributor.
+      name: 'good first issue'
+      target: issues
+      prowPlugin: help
+      addedBy: anyone
+    - color: 006b75
+      description: Denotes an issue that needs help from a contributor.
+      name: 'help wanted'
+      target: issues
+      prowPlugin: help
+      addedBy: anyone
+    - color: d455d0
+      description: Categorizes issue as a support question.
+      name: question
+      target: issues
+      addedBy: human
     # Needs
     - name: needs-kind
       description: Indicates a PR or issue lacks a `kind/foo` label and requires one.
