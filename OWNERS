@@ -1,8 +1,5 @@
+---
 approvers:
-  - raelga
-  - roivaz
-  - slopezz
+- 3scale-sre-approvers
 reviewers:
-  - raelga
-  - roivaz
-  - slopezz
+- 3scale-sre-reviewers
