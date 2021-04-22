@@ -64,6 +64,7 @@ data:
       - owners-label
       - require-matching-label
       - retitle
+      - size
       - trigger
       - verify-owners
       - wip
