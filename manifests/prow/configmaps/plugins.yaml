@@ -64,6 +64,7 @@ data:
       - owners-label
       - require-matching-label
       - retitle
+      - size
       - trigger
       - verify-owners
       - wip
@@ -187,10 +188,10 @@ data:
 
     size:
         s: 8
-        m: 32
-        l: 128
-        xl: 512
-        xxl: 2048
+        m: 64
+        l: 512
+        xl: 2048
+        xxl: 8192
 
     welcome:
       - repos:
