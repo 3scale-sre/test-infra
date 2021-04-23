@@ -1,1 +1,1 @@
-# 3Scale GitHub Workflow & Testing Infrastructure
+# 3scale GitHub Workflow & Testing Infrastructure
