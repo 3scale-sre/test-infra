@@ -17,7 +17,7 @@ check: ## Checks if the required files are present
 	@test -f $(LABELS_FILE) \
 		|| { echo "$(LABELS_FILE) not found."; exit 1; }
 
-docs: check ## Runs the label sync against 3scale-ops entire org
+docs: ## Runs the label sync against 3scale-ops entire org
 	docker run \
 		--rm \
 		--volume $(GITHUB_OAUTH_FILE):/etc/github/oauth \
