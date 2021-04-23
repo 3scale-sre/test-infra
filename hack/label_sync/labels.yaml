@@ -276,6 +276,11 @@ repos:
       addedBy: anyone
     - name: env/pro-base
       description: Categorizes issue or PR as related to the pro-base environment.
+      color: E99695
+      target: both
+      addedBy: anyone
+    - name: env/pro-saas
+      description: Categorizes issue or PR as related to the pro-saas environment.
       color: EE0000
       target: both
       addedBy: anyone
@@ -320,6 +325,11 @@ repos:
       addedBy: anyone
     - name: env/pro-base
       description: Categorizes issue or PR as related to the pro-base environment.
+      color: E99695
+      target: both
+      addedBy: anyone
+    - name: env/pro-saas
+      description: Categorizes issue or PR as related to the pro-saas environment.
       color: EE0000
       target: both
       addedBy: anyone
