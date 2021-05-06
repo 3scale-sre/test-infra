@@ -5,9 +5,11 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     external-dns.alpha.kubernetes.io/hostname: prow-hook.mgmt.3sca.net
-    external-dns.alpha.kubernetes.io/target: prow-hook.apps.pro-base-ocp4.mgmt.3sca.net
+    external-dns.alpha.kubernetes.io/target: prow-hook.external.pro-base-ocp4.mgmt.3sca.net
   name: prow-hook
   namespace: prow
+  labels:
+    type: external
 spec:
   rules:
   - host: prow-hook.mgmt.3sca.net
