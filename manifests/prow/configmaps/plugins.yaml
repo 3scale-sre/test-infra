@@ -135,6 +135,7 @@ data:
         - env/dev-eng
         - env/stg-saas
         - env/pro-base
+        - env/pro-saas
 
     blunderbuss:
       # ExcludeApprovers controls whether approvers are considered to be
