@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-    external-dns.alpha.kubernetes.io/target: prow.internal.pro-base-ocp4.mgmt.3sca.net
+    external-dns.alpha.kubernetes.io/target: prow.apps.pro-base-ocp4.mgmt.3sca.net
   labels:
     type: internal
   name: prow
