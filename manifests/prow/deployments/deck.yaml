@@ -24,102 +24,102 @@ spec:
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: deck
-              topologyKey: kubernetes.io/hostname
-            weight: 100
-          - podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: deck
-              topologyKey: kubernetes.io/hostname
-            weight: 5
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: deck
+                topologyKey: kubernetes.io/hostname
+              weight: 100
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: deck
+                topologyKey: kubernetes.io/hostname
+              weight: 5
       containers:
-      - args:
-        - '--config-path=/etc/config/config.yaml'
-        - '--plugin-config=/etc/plugins/plugins.yaml'
-        - '--tide-url=http://tide/'
-        - '--hook-url=http://hook:8888/plugin-help'
-        - '--github-token-path=/etc/github/token'
-        - '--github-endpoint=http://ghproxy'
-        - '--github-endpoint=https://api.github.com'
-        - '--github-graphql-endpoint=http://ghproxy/graphql'
-        - '--plugin-config=/etc/plugins/plugins.yaml'
-        - '--s3-credentials-file=/etc/s3-credentials/service-account.json'
-        - '--spyglass=true'
-        image: gcr.io/k8s-prow/deck:v20210223-cdbc865141
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: 8081
-          initialDelaySeconds: 30
-          periodSeconds: 15
-          successThreshold: 1
-          failureThreshold: 3
-          timeoutSeconds: 600
-        name: deck
-        ports:
-        - containerPort: 8080
-          name: http
-          protocol: TCP
-        - containerPort: 8081
-          name: health
-          protocol: TCP
-        - containerPort: 6060
-          name: pprof
-          protocol: TCP
-        - containerPort: 9090
-          name: metrics
-          protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: /healthz
-            port: 8081
-          initialDelaySeconds: 30
-          periodSeconds: 20
-          successThreshold: 1
-          failureThreshold: 3
-          timeoutSeconds: 600
-        resources:
-          limits:
-            cpu: 250m
-            memory: 384M
-          requests:
-            cpu: 100m
-            memory: 192M
-        volumeMounts:
-        - mountPath: /etc/config
-          name: config
-          readOnly: true
-        - mountPath: /etc/github
-          name: github-token
-          readOnly: true
-        - mountPath: /etc/plugins
-          name: plugins
-          readOnly: true
-        - mountPath: /etc/s3-credentials
-          name: s3-credentials
-          readOnly: true
+        - args:
+            - "--config-path=/etc/config/config.yaml"
+            - "--plugin-config=/etc/plugins/plugins.yaml"
+            - "--tide-url=http://tide/"
+            - "--hook-url=http://hook:8888/plugin-help"
+            - "--github-token-path=/etc/github/token"
+            - "--github-endpoint=http://ghproxy"
+            - "--github-endpoint=https://api.github.com"
+            - "--github-graphql-endpoint=http://ghproxy/graphql"
+            - "--plugin-config=/etc/plugins/plugins.yaml"
+            - "--s3-credentials-file=/etc/s3-credentials/service-account.json"
+            - "--spyglass=true"
+          image: gcr.io/k8s-prow/deck:v20210915-80100106cc
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            successThreshold: 1
+            failureThreshold: 3
+            timeoutSeconds: 600
+          name: deck
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+            - containerPort: 8081
+              name: health
+              protocol: TCP
+            - containerPort: 6060
+              name: pprof
+              protocol: TCP
+            - containerPort: 9090
+              name: metrics
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3
+            timeoutSeconds: 600
+          resources:
+            limits:
+              cpu: 250m
+              memory: 384M
+            requests:
+              cpu: 100m
+              memory: 192M
+          volumeMounts:
+            - mountPath: /etc/config
+              name: config
+              readOnly: true
+            - mountPath: /etc/github
+              name: github-token
+              readOnly: true
+            - mountPath: /etc/plugins
+              name: plugins
+              readOnly: true
+            - mountPath: /etc/s3-credentials
+              name: s3-credentials
+              readOnly: true
       serviceAccountName: deck
       terminationGracePeriodSeconds: 30
       volumes:
-      - configMap:
+        - configMap:
+            name: config
           name: config
-        name: config
-      - name: github-token
-        secret:
-          secretName: github-tokens
-          items:
-            - key: oauth
-              path: token
-      - configMap:
+        - name: github-token
+          secret:
+            secretName: github-tokens
+            items:
+              - key: oauth
+                path: token
+        - configMap:
+            name: plugins
           name: plugins
-        name: plugins
-      - name: s3-credentials
-        secret:
-          secretName: s3-credentials
-          items:
-            - key: service-account.json
-              path: service-account.json
+        - name: s3-credentials
+          secret:
+            secretName: s3-credentials
+            items:
+              - key: service-account.json
+                path: service-account.json
