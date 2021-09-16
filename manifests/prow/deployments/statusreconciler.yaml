@@ -17,91 +17,90 @@ spec:
         app.kubernetes.io/name: statusreconciler
     spec:
       containers:
-      - args:
-        - '--dry-run=false'
-        - '--continue-on-error=true'
-        - '--plugin-config=/etc/plugins/plugins.yaml'
-        - '--config-path=/etc/config/config.yaml'
-        - '--github-token-path=/etc/github/token'
-        - '--github-endpoint=http://ghproxy'
-        - '--github-endpoint=https://api.github.com'
-        - '--s3-credentials-file=/etc/s3-credentials/service-account.json'
-        - '--status-path=s3://3scale-mgmt-prow/status-reconciler/status-reconciler-status'
-        image: gcr.io/k8s-prow/status-reconciler:v20210223-cdbc865141
-        livenessProbe:
-          failureThreshold: 3
-          tcpSocket:
-            port: 6060
-          # httpGet:
-          #   path: /healthz
-          #   port: 8081
-          #   scheme: HTTP
-          initialDelaySeconds: 25
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
-        name: statusreconciler
-        ports:
-        # - containerPort: 8081
-        #   name: health
-        #   protocol: TCP
-        - containerPort: 6060
-          name: pprof
-          protocol: TCP
-        - containerPort: 9090
-          name: metrics
-          protocol: TCP
-        readinessProbe:
-          failureThreshold: 3
-          tcpSocket:
-            port: 6060
-          # httpGet:
-          #   path: /healthz
-          #   port: 8081
-          #   scheme: HTTP
-          initialDelaySeconds: 25
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
-        resources:
-          limits:
-            cpu: 75m
-            memory: 64M
-          requests:
-            cpu: 25m
-            memory: 32M
-        volumeMounts:
-        - mountPath: /etc/github
-          name: github-token
-          readOnly: true
-        - mountPath: /etc/config
-          name: config
-          readOnly: true
-        - mountPath: /etc/plugins
-          name: plugins
-          readOnly: true
-        - mountPath: /etc/s3-credentials
-          name: s3-credentials
-          readOnly: true
+        - args:
+            - "--dry-run=false"
+            - "--continue-on-error=true"
+            - "--plugin-config=/etc/plugins/plugins.yaml"
+            - "--config-path=/etc/config/config.yaml"
+            - "--github-token-path=/etc/github/token"
+            - "--github-endpoint=http://ghproxy"
+            - "--github-endpoint=https://api.github.com"
+            - "--s3-credentials-file=/etc/s3-credentials/service-account.json"
+            - "--status-path=s3://3scale-mgmt-prow/status-reconciler/status-reconciler-status"
+          image: gcr.io/k8s-prow/status-reconciler:v20210915-80100106cc
+          livenessProbe:
+            failureThreshold: 3
+            tcpSocket:
+              port: 6060
+            # httpGet:
+            #   path: /healthz
+            #   port: 8081
+            #   scheme: HTTP
+            initialDelaySeconds: 25
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: statusreconciler
+          ports:
+            # - containerPort: 8081
+            #   name: health
+            #   protocol: TCP
+            - containerPort: 6060
+              name: pprof
+              protocol: TCP
+            - containerPort: 9090
+              name: metrics
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            tcpSocket:
+              port: 6060
+            # httpGet:
+            #   path: /healthz
+            #   port: 8081
+            #   scheme: HTTP
+            initialDelaySeconds: 25
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 75m
+              memory: 64M
+            requests:
+              cpu: 25m
+              memory: 32M
+          volumeMounts:
+            - mountPath: /etc/github
+              name: github-token
+              readOnly: true
+            - mountPath: /etc/config
+              name: config
+              readOnly: true
+            - mountPath: /etc/plugins
+              name: plugins
+              readOnly: true
+            - mountPath: /etc/s3-credentials
+              name: s3-credentials
+              readOnly: true
       serviceAccountName: statusreconciler
       terminationGracePeriodSeconds: 180
       volumes:
-      - name: github-token
-        secret:
-          secretName: github-tokens
-          items:
-            - key: oauth
-              path: token
-      - configMap:
+        - name: github-token
+          secret:
+            secretName: github-tokens
+            items:
+              - key: oauth
+                path: token
+        - configMap:
+            name: config
           name: config
-        name: config
-      - configMap:
+        - configMap:
+            name: plugins
           name: plugins
-        name: plugins
-      - name: s3-credentials
-        secret:
-          secretName: s3-credentials
-          items:
-            - key: service-account.json
-              path: service-account.json
-
+        - name: s3-credentials
+          secret:
+            secretName: s3-credentials
+            items:
+              - key: service-account.json
+                path: service-account.json
