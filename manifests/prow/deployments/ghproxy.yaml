@@ -61,10 +61,10 @@ spec:
             timeoutSeconds: 1
           resources:
             limits:
-              cpu: 150m
+              cpu: 50m
               memory: 128M
             requests:
-              cpu: 75m
+              cpu: 5m
               memory: 32M
           volumeMounts:
             - mountPath: /cache

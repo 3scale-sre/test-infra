@@ -63,10 +63,10 @@ spec:
             timeoutSeconds: 1
           resources:
             limits:
-              cpu: 150m
+              cpu: 100m
               memory: 256M
             requests:
-              cpu: 50m
+              cpu: 10m
               memory: 128M
           volumeMounts:
             - mountPath: /etc/github

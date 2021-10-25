@@ -64,10 +64,10 @@ spec:
               readOnly: true
           resources:
             limits:
-              cpu: 150m
+              cpu: 50m
               memory: 256M
             requests:
-              cpu: 50m
+              cpu: 5m
               memory: 128M
       serviceAccountName: horologium
       terminationGracePeriodSeconds: 30
