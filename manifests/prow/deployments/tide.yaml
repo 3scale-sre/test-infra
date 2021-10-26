@@ -36,10 +36,10 @@ spec:
               name: http
           resources:
             limits:
-              cpu: 150m
+              cpu: 100m
               memory: 128M
             requests:
-              cpu: 50m
+              cpu: 10m
               memory: 64M
           volumeMounts:
             - mountPath: /etc/github
