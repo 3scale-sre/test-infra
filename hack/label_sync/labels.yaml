@@ -21,7 +21,7 @@ default:
       target: both
       addedBy: anyone
       previously:
-      - name: bug
+        - name: bug
     - name: kind/cleanup
       description: Categorizes issue or PR as related to cleaning up code, process, or technical debt.
       color: c7def8
@@ -33,14 +33,14 @@ default:
       target: both
       addedBy: anyone
       previously:
-      - name: documentation
+        - name: documentation
     - name: kind/feature
       description: Categorizes issue or PR as related to a new feature.
       color: c7def8
       target: both
       addedBy: anyone
       previously:
-      - name: enhancement
+        - name: enhancement
     - name: kind/automation
       description: Categorizes issue or PR as related to CI/CD or an automation.
       color: c7def8
@@ -52,7 +52,7 @@ default:
       target: both
       addedBy: anyone
       previously:
-      - name: layer/monitoring
+        - name: layer/monitoring
     # Priority
     - name: priority/awaiting-more-evidence
       description: Lowest priority. Possibly useful, but not yet enough support to actually get it done.
@@ -133,7 +133,7 @@ default:
       name: triage/duplicate
       target: both
       previously:
-      - name: duplicate
+        - name: duplicate
       addedBy: humans
     - color: d455d0
       description: Indicates an issue needs more information in order to work on it.
@@ -149,20 +149,20 @@ default:
       description: Indicates an issue that can not or will not be resolved.
       name: triage/unresolved
       previously:
-      - name: invalid
-      - name: wontfix
+        - name: invalid
+        - name: wontfix
       target: both
       addedBy: humans
     # Github
     - color: 7057ff
       description: Denotes an issue ready for a new contributor.
-      name: 'good first issue'
+      name: "good first issue"
       target: issues
       prowPlugin: help
       addedBy: anyone
     - color: 006b75
       description: Denotes an issue that needs help from a contributor.
-      name: 'help wanted'
+      name: "help wanted"
       target: issues
       prowPlugin: help
       addedBy: anyone
@@ -210,145 +210,153 @@ default:
       target: both
       addedBy: anyone
       previously:
-      - name: layer/operations
+        - name: layer/operations
 orgs:
   3scale:
     labels:
-    # Working groups
-    - name: wg/apicast
-      description: Categorizes issue or PR as related to the apicast working group.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-    - name: wg/backend
-      description: Categorizes issue or PR as related to the backend working group.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-      previously:
-      - name: layer/backend
-    - name: wg/system
-      description: Categorizes issue or PR as related to the system working group.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-      previously:
-      - name: layer/system
+      # Working groups
+      - name: wg/apicast
+        description: Categorizes issue or PR as related to the apicast working group.
+        color: ffbf00
+        target: both
+        addedBy: anyone
+      - name: wg/backend
+        description: Categorizes issue or PR as related to the backend working group.
+        color: ffbf00
+        target: both
+        addedBy: anyone
+        previously:
+          - name: layer/backend
+      - name: wg/system
+        description: Categorizes issue or PR as related to the system working group.
+        color: ffbf00
+        target: both
+        addedBy: anyone
+        previously:
+          - name: layer/system
+  3scale-ops:
+    labels:
+      # Kind
+      - name: kind/release
+        description: Categorizes issue or PR as related to a new release.
+        color: 3CAB6C
+        target: both
+        addedBy: anyone
 repos:
   3scale-ops/marin3r:
     labels:
-    # Test
-    - color: b60205
-      description: Indicates a PR that requires an org member to verify it is safe to test.
-      name: needs-ok-to-test
-      target: prs
-      prowPlugin: trigger
-      addedBy: prow
-    - color: 15dd18
-      description: Indicates a non-member PR verified by an org member that is safe to test.
-      name: ok-to-test
-      target: prs
-      prowPlugin: trigger
-      addedBy: anyone
+      # Test
+      - color: b60205
+        description: Indicates a PR that requires an org member to verify it is safe to test.
+        name: needs-ok-to-test
+        target: prs
+        prowPlugin: trigger
+        addedBy: prow
+      - color: 15dd18
+        description: Indicates a non-member PR verified by an org member that is safe to test.
+        name: ok-to-test
+        target: prs
+        prowPlugin: trigger
+        addedBy: anyone
   3scale/3scale-saas:
     labels:
-    # Kind
-    - name: kind/deploy
-      description: Categorizes issue or PR as related to a deploy.
-      color: 3CAB6C
-      target: both
-      addedBy: anyone
-    # Env
-    - name: env/common
-      description: Categorizes issue or PR as related shared across environments.
-      color: 34828C
-      target: both
-      addedBy: anyone
-    - name: env/dev-eng
-      description: Categorizes issue or PR as related to the dev-env environment.
-      color: C2E0C6
-      target: both
-      addedBy: anyone
-    - name: env/stg-saas
-      description: Categorizes issue or PR as related to the stg-saas environment.
-      color: FBCA04
-      target: both
-      addedBy: anyone
-    - name: env/pro-base
-      description: Categorizes issue or PR as related to the pro-base environment.
-      color: E99695
-      target: both
-      addedBy: anyone
-    - name: env/pro-saas
-      description: Categorizes issue or PR as related to the pro-saas environment.
-      color: EE0000
-      target: both
-      addedBy: anyone
+      # Kind
+      - name: kind/deploy
+        description: Categorizes issue or PR as related to a deploy.
+        color: 3CAB6C
+        target: both
+        addedBy: anyone
+      # Env
+      - name: env/common
+        description: Categorizes issue or PR as related shared across environments.
+        color: 34828C
+        target: both
+        addedBy: anyone
+      - name: env/dev-eng
+        description: Categorizes issue or PR as related to the dev-env environment.
+        color: C2E0C6
+        target: both
+        addedBy: anyone
+      - name: env/stg-saas
+        description: Categorizes issue or PR as related to the stg-saas environment.
+        color: FBCA04
+        target: both
+        addedBy: anyone
+      - name: env/pro-base
+        description: Categorizes issue or PR as related to the pro-base environment.
+        color: E99695
+        target: both
+        addedBy: anyone
+      - name: env/pro-saas
+        description: Categorizes issue or PR as related to the pro-saas environment.
+        color: EE0000
+        target: both
+        addedBy: anyone
   3scale/platform:
     labels:
-    # Kind
-    - name: kind/maintenance
-      description: Categorizes issue or PR as related to maintenance tasks.
-      color: c7def8
-      target: both
-      addedBy: anyone
-    - name: kind/deploy
-      description: Categorizes issue or PR as related to a deploy.
-      color: 3CAB6C
-      target: both
-      addedBy: anyone
-    - name: kind/incident
-      description: Categorizes issue or PR as related to an incident, outage or postmortem.
-      color: b328d6
-      target: both
-      addedBy: anyone
-    # Env
-    - name: env/legacy
-      description: Categorizes issue or PR as related to the legacy environment.
-      color: 835C3B
-      target: both
-      addedBy: anyone
-    - name: env/common
-      description: Categorizes issue or PR as related shared across environments.
-      color: 34828C
-      target: both
-      addedBy: anyone
-    - name: env/dev-eng
-      description: Categorizes issue or PR as related to the dev-env environment.
-      color: C2E0C6
-      target: both
-      addedBy: anyone
-    - name: env/stg-saas
-      description: Categorizes issue or PR as related to the stg-saas environment.
-      color: FBCA04
-      target: both
-      addedBy: anyone
-    - name: env/pro-base
-      description: Categorizes issue or PR as related to the pro-base environment.
-      color: E99695
-      target: both
-      addedBy: anyone
-    - name: env/pro-saas
-      description: Categorizes issue or PR as related to the pro-saas environment.
-      color: EE0000
-      target: both
-      addedBy: anyone
-    # Layer
-    - name: layer/storage
-      description: Categorizes issue or PR as related to the storage layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-      deleteAfter: 2021-04-15T00:00:00Z
-    - name: layer/application
-      description: Categorizes issue or PR as related to the application layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-      deleteAfter: 2021-04-15T00:00:00Z
-    - name: layer/routing
-      description: Categorizes issue or PR as related to the routing layer.
-      color: ffbf00
-      target: both
-      addedBy: anyone
-      deleteAfter: 2021-04-15T00:00:00Z
+      # Kind
+      - name: kind/maintenance
+        description: Categorizes issue or PR as related to maintenance tasks.
+        color: c7def8
+        target: both
+        addedBy: anyone
+      - name: kind/deploy
+        description: Categorizes issue or PR as related to a deploy.
+        color: 3CAB6C
+        target: both
+        addedBy: anyone
+      - name: kind/incident
+        description: Categorizes issue or PR as related to an incident, outage or postmortem.
+        color: b328d6
+        target: both
+        addedBy: anyone
+      # Env
+      - name: env/legacy
+        description: Categorizes issue or PR as related to the legacy environment.
+        color: 835C3B
+        target: both
+        addedBy: anyone
+      - name: env/common
+        description: Categorizes issue or PR as related shared across environments.
+        color: 34828C
+        target: both
+        addedBy: anyone
+      - name: env/dev-eng
+        description: Categorizes issue or PR as related to the dev-env environment.
+        color: C2E0C6
+        target: both
+        addedBy: anyone
+      - name: env/stg-saas
+        description: Categorizes issue or PR as related to the stg-saas environment.
+        color: FBCA04
+        target: both
+        addedBy: anyone
+      - name: env/pro-base
+        description: Categorizes issue or PR as related to the pro-base environment.
+        color: E99695
+        target: both
+        addedBy: anyone
+      - name: env/pro-saas
+        description: Categorizes issue or PR as related to the pro-saas environment.
+        color: EE0000
+        target: both
+        addedBy: anyone
+      # Layer
+      - name: layer/storage
+        description: Categorizes issue or PR as related to the storage layer.
+        color: ffbf00
+        target: both
+        addedBy: anyone
+        deleteAfter: 2021-04-15T00:00:00Z
+      - name: layer/application
+        description: Categorizes issue or PR as related to the application layer.
+        color: ffbf00
+        target: both
+        addedBy: anyone
+        deleteAfter: 2021-04-15T00:00:00Z
+      - name: layer/routing
+        description: Categorizes issue or PR as related to the routing layer.
+        color: ffbf00
+        target: both
+        addedBy: anyone
+        deleteAfter: 2021-04-15T00:00:00Z
