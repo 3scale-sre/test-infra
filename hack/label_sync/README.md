@@ -12,6 +12,7 @@
 - [Labels that apply to all repos, only for issues](#labels-that-apply-to-all-repos-only-for-issues)
 - [Labels that apply to all repos, only for PRs](#labels-that-apply-to-all-repos-only-for-prs)
 - [Labels that apply to all repos in 3scale, for both issues and PRs](#labels-that-apply-to-all-repos-in-3scale-for-both-issues-and-prs)
+- [Labels that apply to all repos in 3scale-ops, for both issues and PRs](#labels-that-apply-to-all-repos-in-3scale-ops-for-both-issues-and-prs)
 - [Labels that apply to 3scale-ops/marin3r, only for PRs](#labels-that-apply-to-3scale-opsmarin3r-only-for-prs)
 - [Labels that apply to 3scale/3scale-saas, for both issues and PRs](#labels-that-apply-to-3scale3scale-saas-for-both-issues-and-prs)
 - [Labels that apply to 3scale/platform, for both issues and PRs](#labels-that-apply-to-3scaleplatform-for-both-issues-and-prs)
@@ -128,6 +129,12 @@ That list is available in the `label` configuration section inside the
 | <a id="wg/apicast" href="#wg/apicast">`wg/apicast`</a> | Categorizes issue or PR as related to the apicast working group.| anyone | |
 | <a id="wg/backend" href="#wg/backend">`wg/backend`</a> | Categorizes issue or PR as related to the backend working group. <br><br> This was previously `layer/backend`, | anyone | |
 | <a id="wg/system" href="#wg/system">`wg/system`</a> | Categorizes issue or PR as related to the system working group. <br><br> This was previously `layer/system`, | anyone | |
+
+## Labels that apply to all repos in 3scale-ops, for both issues and PRs
+
+| Name | Description | Added By | Prow Plugin |
+| ---- | ----------- | -------- | ----------- |
+| <a id="kind/release" href="#kind/release">`kind/release`</a> | Categorizes issue or PR as related to a new release.| anyone | |
 
 ## Labels that apply to 3scale-ops/marin3r, only for PRs
 
