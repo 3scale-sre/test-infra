@@ -3,7 +3,7 @@ kind: ExternalSecret
 metadata:
   name: github-tokens
 spec:
-  refreshInterval: 60s
+  refreshInterval: 1m0s
   secretStoreRef:
     name: vault-mgmt
     kind: ClusterSecretStore
