@@ -8,6 +8,8 @@ spec:
     name: vault-mgmt
     kind: ClusterSecretStore
   target:
+    creationPolicy: Owner
+    deletionPolicy: Retain
     name: github-tokens
   data:
     - secretKey: oauth
