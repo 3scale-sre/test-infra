@@ -1,20 +1,22 @@
-apiVersion: external-secrets.io/v1alpha1
+apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: github-tokens
 spec:
-  refreshInterval: 60s
+  refreshInterval: 1m0s
   secretStoreRef:
     name: vault-mgmt
     kind: ClusterSecretStore
   target:
+    creationPolicy: Owner
+    deletionPolicy: Retain
     name: github-tokens
   data:
-  - secretKey: oauth
-    remoteRef:
-      key: kubernetes/pro-base/ocp4/prow/github-tokens
-      property: oauth
-  - secretKey: hmac
-    remoteRef:
-      key: kubernetes/pro-base/ocp4/prow/github-tokens
-      property: hmac
+    - secretKey: oauth
+      remoteRef:
+        key: kubernetes/pro-base/ocp4/prow/github-tokens
+        property: oauth
+    - secretKey: hmac
+      remoteRef:
+        key: kubernetes/pro-base/ocp4/prow/github-tokens
+        property: hmac
