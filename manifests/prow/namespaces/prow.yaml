@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    monitoring-key: middleware
+    basic-monitoring: enabled
+  name: prow
