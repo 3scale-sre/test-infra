@@ -24,7 +24,7 @@ spec:
             - "--cache-sizeGB=19"
             - "--serve-metrics=true"
             - "--legacy-disable-disk-cache-partitions-by-auth-header=false"
-          image: gcr.io/k8s-prow/ghproxy:v20210915-80100106cc
+          image: gcr.io/k8s-prow/ghproxy:v20220919-f59fd34fdf
           livenessProbe:
             failureThreshold: 3
             httpGet:

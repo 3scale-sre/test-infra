@@ -27,7 +27,7 @@ spec:
             - "--github-endpoint=https://api.github.com"
             - "--s3-credentials-file=/etc/s3-credentials/service-account.json"
             - "--status-path=s3://3scale-mgmt-prow/status-reconciler/status-reconciler-status"
-          image: gcr.io/k8s-prow/status-reconciler:v20210915-80100106cc
+          image: gcr.io/k8s-prow/status-reconciler:v20220919-f59fd34fdf
           livenessProbe:
             failureThreshold: 3
             tcpSocket:
