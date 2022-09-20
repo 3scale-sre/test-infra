@@ -26,7 +26,7 @@ spec:
             - "--github-token-path=/etc/github/token"
             - "--github-workers=10"
             - "--kubernetes-blob-storage-workers=10"
-          image: gcr.io/k8s-prow/crier:v20210915-80100106cc
+          image: gcr.io/k8s-prow/crier:v20220919-f59fd34fdf
           livenessProbe:
             failureThreshold: 3
             tcpSocket:

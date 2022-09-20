@@ -20,7 +20,7 @@ spec:
         - args:
             - "--config-path=/etc/config/config.yaml"
           #- '--health-port=8081'
-          image: gcr.io/k8s-prow/sinker:v20210915-80100106cc
+          image: gcr.io/k8s-prow/sinker:v20220919-f59fd34fdf
           livenessProbe:
             failureThreshold: 3
             tcpSocket:

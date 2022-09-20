@@ -29,7 +29,7 @@ spec:
             - "--s3-credentials-file=/etc/s3-credentials/service-account.json"
             - "--status-path=s3://3scale-mgmt-prow/tide/tide-status"
             - "--history-uri=s3://3scale-mgmt-prow/tide/tide-history.json"
-          image: gcr.io/k8s-prow/tide:v20210915-80100106cc
+          image: gcr.io/k8s-prow/tide:v20220919-f59fd34fdf
           name: tide
           ports:
             - containerPort: 8888
