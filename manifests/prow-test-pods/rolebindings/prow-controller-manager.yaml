@@ -1,5 +1,5 @@
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: prow-controller-manager
@@ -9,6 +9,6 @@ roleRef:
   kind: Role
   name: prow-controller-manager
 subjects:
-- kind: ServiceAccount
-  name: prow-controller-manager
-  namespace: prow
+  - kind: ServiceAccount
+    name: prow-controller-manager
+    namespace: prow
