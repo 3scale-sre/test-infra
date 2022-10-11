@@ -1,24 +1,24 @@
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: hook
   namespace: prow
 rules:
-- apiGroups:
-  - prow.k8s.io
-  resources:
-  - prowjobs
-  verbs:
-  - create
-  - get
-  - list
-  - update
-- apiGroups:
-  - ''
-  resources:
-  - configmaps
-  verbs:
-  - create
-  - get
-  - update
+  - apiGroups:
+      - prow.k8s.io
+    resources:
+      - prowjobs
+    verbs:
+      - create
+      - get
+      - list
+      - update
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - create
+      - get
+      - update
