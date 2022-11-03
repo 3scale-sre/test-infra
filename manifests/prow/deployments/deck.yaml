@@ -49,7 +49,7 @@ spec:
             - "--plugin-config=/etc/plugins/plugins.yaml"
             - "--s3-credentials-file=/etc/s3-credentials/service-account.json"
             - "--spyglass=true"
-          image: gcr.io/k8s-prow/deck:v20220919-f59fd34fdf
+          image: gcr.io/k8s-prow/deck:v20221102-f0b00eafb2
           livenessProbe:
             httpGet:
               path: /healthz

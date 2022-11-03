@@ -25,7 +25,7 @@ spec:
             - "--github-endpoint=https://api.github.com"
             - "--enable-controller=plank"
           #- '--health-port=8081'
-          image: gcr.io/k8s-prow/prow-controller-manager:v20220919-f59fd34fdf
+          image: gcr.io/k8s-prow/prow-controller-manager:v20221102-f0b00eafb2
           livenessProbe:
             failureThreshold: 3
             tcpSocket:
