@@ -260,6 +260,12 @@ repos:
         addedBy: anyone
   3scale/3scale-saas:
     labels:
+      # Triggers
+      - color: ff0800
+        description: Indicates a PR containing an production ready image has been approved and can be promoted to production.
+        name: ok-to-prod
+        target: prs
+        addedBy: approvers
       # Kind
       - name: kind/deploy
         description: Categorizes issue or PR as related to a deploy.
