@@ -10,6 +10,7 @@ metadata:
   name: prow
   namespace: prow
 spec:
+  ingressClassName: openshift-default
   rules:
   - host: prow.mgmt.3sca.net
     http:
