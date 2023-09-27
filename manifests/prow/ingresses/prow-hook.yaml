@@ -11,6 +11,7 @@ metadata:
   labels:
     type: external
 spec:
+  ingressClassName: openshift-external
   rules:
   - host: prow-hook.mgmt.3sca.net
     http:
