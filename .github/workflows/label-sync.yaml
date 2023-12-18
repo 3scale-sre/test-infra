@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - 'hack/label_sync/labels.yaml'
+  workflow_dispatch:
 jobs:
 
   sync:
