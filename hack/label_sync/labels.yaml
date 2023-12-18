@@ -262,7 +262,7 @@ repos:
     labels:
       # Triggers
       - color: ff0800
-        description: Indicates a PR containing an production ready image has been approved and can be promoted to production.
+        description: Indicates a PR containing an image that has been approved and can be promoted to production.
         name: ok-to-prod
         target: prs
         addedBy: approvers
