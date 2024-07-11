@@ -50,6 +50,24 @@ data:
       - trigger
       - verify-owners
       - wip
+      3scale/3scale-saas-dev:
+      - approve
+      - assign
+      - blunderbuss
+      - mergecommitblocker
+      - help
+      - hold
+      - invalidcommitmsg
+      - label
+      - lgtm
+      - lifecycle
+      - owners-label
+      - require-matching-label
+      - retitle
+      - size
+      - trigger
+      - verify-owners
+      - wip
       3scale/platform:
       - approve
       - assign
