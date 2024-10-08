@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-    external-dns.alpha.kubernetes.io/target: prow.apps.pro-base-ocp4.mgmt.3sca.net
+    external-dns.alpha.kubernetes.io/target: prow.apps.rosa.pro-base-rosa.73b2.p3.openshiftapps.com
   labels:
     type: internal
   name: prow
@@ -12,16 +12,16 @@ metadata:
 spec:
   ingressClassName: openshift-default
   rules:
-  - host: prow.mgmt.3sca.net
-    http:
-      paths:
-      - pathType: ImplementationSpecific
-        backend:
-          service:
-            name: deck
-            port:
-              name: http
+    - host: prow.mgmt.3sca.net
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            backend:
+              service:
+                name: deck
+                port:
+                  name: http
   tls:
-  - hosts:
-    - prow.mgmt.3sca.net
-    secretName: prow-ingress-tls
+    - hosts:
+        - prow.mgmt.3sca.net
+      secretName: prow-ingress-tls
