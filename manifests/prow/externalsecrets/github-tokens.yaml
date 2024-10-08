@@ -14,9 +14,9 @@ spec:
   data:
     - secretKey: oauth
       remoteRef:
-        key: kubernetes/pro-base/ocp4/prow/github-tokens
+        key: kubernetes/pro-base/rosa/prow/github-tokens
         property: oauth
     - secretKey: hmac
       remoteRef:
-        key: kubernetes/pro-base/ocp4/prow/github-tokens
+        key: kubernetes/pro-base/rosa/prow/github-tokens
         property: hmac
