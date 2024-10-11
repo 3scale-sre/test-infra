@@ -27,7 +27,7 @@ spec:
             - "--github-endpoint=https://api.github.com"
             - "--s3-credentials-file=/etc/s3-credentials/service-account.json"
             - "--status-path=s3://3scale-mgmt-prow/status-reconciler/status-reconciler-status"
-          image: gcr.io/k8s-prow/status-reconciler:v20221102-f0b00eafb2
+          image: quay.io/prow/status-reconciler:v20241011-24e765300-dirty
           livenessProbe:
             failureThreshold: 3
             tcpSocket:
