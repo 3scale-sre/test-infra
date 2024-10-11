@@ -6,23 +6,24 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-production
     external-dns.alpha.kubernetes.io/hostname: prow-hook.mgmt.3sca.net
     external-dns.alpha.kubernetes.io/target: prow-hook.external.rosa.pro-base-rosa.73b2.p3.openshiftapps.com
+  labels:
+    app.kubernetes.io/name: prow-hook
+    type: external
   name: prow-hook
   namespace: prow
-  labels:
-    type: external
 spec:
   ingressClassName: openshift-external
   rules:
     - host: prow-hook.mgmt.3sca.net
       http:
         paths:
-          - path: /hook
-            pathType: ImplementationSpecific
-            backend:
+          - backend:
               service:
                 name: hook
                 port:
                   name: http
+            path: /hook
+            pathType: ImplementationSpecific
   tls:
     - hosts:
         - prow-hook.mgmt.3sca.net

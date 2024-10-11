@@ -1,9 +1,9 @@
-kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
 metadata:
   labels:
-    rbac.authorization.k8s.io/aggregate-to-view: "true"
     rbac.authorization.k8s.io/aggregate-to-cluster-reader: "true"
+    rbac.authorization.k8s.io/aggregate-to-view: "true"
   name: aggregate-prow-k8s-io-view
 rules:
   - apiGroups:

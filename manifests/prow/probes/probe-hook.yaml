@@ -1,14 +1,16 @@
 apiVersion: monitoring.coreos.com/v1
 kind: Probe
 metadata:
+  labels:
+    app.kubernetes.io/name: prow-hook
   name: probe-http-priv-ingress-prow-hook
 spec:
   interval: 30s
   module: http_prow_hook
   prober:
     path: /probe
-    url: 'prometheus-exporter-probe-pro-base-blackbox.prometheus-exporter.svc:9115'
+    url: "prometheus-exporter-probe-pro-base-blackbox.prometheus-exporter.svc:9115"
   targets:
     staticConfig:
       static:
-        - 'https://prow-hook.mgmt.3sca.net/hook'
+        - "https://prow-hook.mgmt.3sca.net/hook"
