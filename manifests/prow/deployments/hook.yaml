@@ -43,16 +43,16 @@ spec:
             - "--github-token-path=/etc/github/token"
             - "--github-endpoint=http://ghproxy"
             - "--github-endpoint=https://api.github.com"
-          image: quay.io/prow/hook:v20241011-24e765300-dirty
+          image: quay.io/prow/hook:kustomization-overlay
           imagePullPolicy: Always
           livenessProbe:
+            failureThreshold: 3
             httpGet:
               path: /healthz
               port: 8081
             initialDelaySeconds: 30
             periodSeconds: 15
             successThreshold: 1
-            failureThreshold: 3
             timeoutSeconds: 600
           name: hook
           ports:
@@ -69,13 +69,13 @@ spec:
               name: metrics
               protocol: TCP
           readinessProbe:
+            failureThreshold: 3
             httpGet:
               path: /healthz
               port: 8081
             initialDelaySeconds: 30
             periodSeconds: 20
             successThreshold: 1
-            failureThreshold: 3
             timeoutSeconds: 600
           resources:
             limits:

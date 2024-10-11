@@ -16,6 +16,7 @@ spec:
       labels:
         app.kubernetes.io/name: crier
     spec:
+      affinity: {}
       containers:
         - args:
             - "--blob-storage-workers=10"
@@ -26,11 +27,9 @@ spec:
             - "--github-token-path=/etc/github/token"
             - "--github-workers=10"
             - "--kubernetes-blob-storage-workers=10"
-          image: quay.io/prow/crier:v20241011-24e765300-dirty
+          image: quay.io/prow/crier:kustomization-overlay
           livenessProbe:
             failureThreshold: 3
-            tcpSocket:
-              port: 6060
             # httpGet:
             #   path: /healthz
             #   port: 8081
@@ -38,6 +37,8 @@ spec:
             initialDelaySeconds: 25
             periodSeconds: 10
             successThreshold: 1
+            tcpSocket:
+              port: 6060
             timeoutSeconds: 1
           name: crier
           ports:
@@ -52,8 +53,6 @@ spec:
               protocol: TCP
           readinessProbe:
             failureThreshold: 3
-            tcpSocket:
-              port: 6060
             # httpGet:
             #   path: /healthz
             #   port: 8081
@@ -61,6 +60,8 @@ spec:
             initialDelaySeconds: 25
             periodSeconds: 10
             successThreshold: 1
+            tcpSocket:
+              port: 6060
             timeoutSeconds: 1
           resources:
             limits:
@@ -87,13 +88,14 @@ spec:
           name: config
         - name: github-token
           secret:
-            secretName: github-tokens
             items:
               - key: oauth
                 path: token
+            secretName: github-tokens
+
         - name: s3-credentials
           secret:
-            secretName: s3-credentials
             items:
               - key: service-account.json
                 path: service-account.json
+            secretName: s3-credentials
