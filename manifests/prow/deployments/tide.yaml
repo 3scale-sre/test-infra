@@ -18,6 +18,7 @@ spec:
       labels:
         app.kubernetes.io/name: tide
     spec:
+      affinity: {}
       containers:
         - args:
             - "--dry-run=false"
@@ -29,7 +30,7 @@ spec:
             - "--s3-credentials-file=/etc/s3-credentials/service-account.json"
             - "--status-path=s3://3scale-mgmt-prow/tide/tide-status"
             - "--history-uri=s3://3scale-mgmt-prow/tide/tide-history.json"
-          image: gcr.io/k8s-prow/tide:v20221102-f0b00eafb2
+          image: quay.io/prow/tide:kustomization-overlay
           name: tide
           ports:
             - containerPort: 8888
@@ -55,16 +56,16 @@ spec:
       volumes:
         - name: github-token
           secret:
-            secretName: github-tokens
             items:
               - key: oauth
                 path: token
+            secretName: github-tokens
         - configMap:
             name: config
           name: config
         - name: s3-credentials
           secret:
-            secretName: s3-credentials
             items:
               - key: service-account.json
                 path: service-account.json
+            secretName: s3-credentials

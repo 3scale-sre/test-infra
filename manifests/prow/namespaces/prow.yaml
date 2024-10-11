@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: Namespace
 metadata:
+  annotations:
+    app.kubernetes.io/name: prow
   labels:
-    monitoring-key: middleware
     basic-monitoring: enabled
   name: prow

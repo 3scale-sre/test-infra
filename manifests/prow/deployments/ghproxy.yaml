@@ -18,13 +18,14 @@ spec:
       labels:
         app.kubernetes.io/name: ghproxy
     spec:
+      affinity: {}
       containers:
         - args:
             - "--cache-dir=/cache"
             - "--cache-sizeGB=19"
             - "--serve-metrics=true"
             - "--legacy-disable-disk-cache-partitions-by-auth-header=false"
-          image: gcr.io/k8s-prow/ghproxy:v20221102-f0b00eafb2
+          image: quay.io/prow/ghproxy:kustomization-overlay
           livenessProbe:
             failureThreshold: 3
             httpGet:

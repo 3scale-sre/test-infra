@@ -1,9 +1,5 @@
 ---
 apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: plugins
-  namespace: prow
 data:
   plugins.yaml: |
     plugins:
@@ -222,3 +218,7 @@ data:
       - repos:
           - 3scale-ops/marin3r
         message_template:  "Welcome @{{.AuthorLogin}}! <br><br>It looks like this is your first PR to <a href='https://github.com/{{.Org}}/{{.Repo}}'>{{.Org}}/{{.Repo}}</a> 🎉. Please refer to our <a href='https://github.com/{{.Org}}/{{.Repo}}/tree/main/docs/development'>contributing documentation</a> to help your PR have a smooth ride to approval. <br><br>You will be prompted by a bot to use commands during the review process. Do not be afraid to follow the prompts! It is okay to experiment. [Here is the bot commands documentation](https://go.k8s.io/bot-commands). <br><br>You can also check if {{.Org}}/{{.Repo}} has [its own contribution guidelines](https://github.com/{{.Org}}/{{.Repo}}/tree/main/CONTRIBUTING.md). <br><br>Thank you, and welcome to {{.Repo}}. :smiley:"
+kind: ConfigMap
+metadata:
+  name: plugins
+  namespace: prow

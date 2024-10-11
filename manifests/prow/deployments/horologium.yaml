@@ -18,15 +18,14 @@ spec:
       labels:
         app.kubernetes.io/name: horologium
     spec:
+      affinity: {}
       containers:
         - args:
             - "--dry-run=false"
             - "--config-path=/etc/config/config.yaml"
-          image: gcr.io/k8s-prow/horologium:v20221102-f0b00eafb2
+          image: quay.io/prow/horologium:kustomization-overlay
           livenessProbe:
             failureThreshold: 3
-            tcpSocket:
-              port: 6060
             # httpGet:
             #   path: /healthz
             #   port: 8081
@@ -34,6 +33,8 @@ spec:
             initialDelaySeconds: 25
             periodSeconds: 10
             successThreshold: 1
+            tcpSocket:
+              port: 6060
             timeoutSeconds: 1
           name: horologium
           ports:
@@ -48,8 +49,6 @@ spec:
               protocol: TCP
           readinessProbe:
             failureThreshold: 3
-            tcpSocket:
-              port: 6060
             # httpGet:
             #   path: /healthz
             #   port: 8081
@@ -57,11 +56,9 @@ spec:
             initialDelaySeconds: 25
             periodSeconds: 10
             successThreshold: 1
+            tcpSocket:
+              port: 6060
             timeoutSeconds: 1
-          volumeMounts:
-            - mountPath: /etc/config
-              name: config
-              readOnly: true
           resources:
             limits:
               cpu: 100m
@@ -69,6 +66,10 @@ spec:
             requests:
               cpu: 5m
               memory: 128M
+          volumeMounts:
+            - mountPath: /etc/config
+              name: config
+              readOnly: true
       serviceAccountName: horologium
       terminationGracePeriodSeconds: 30
       volumes:

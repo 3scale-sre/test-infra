@@ -8,7 +8,7 @@ metadata:
   namespace: prow
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 25Gi

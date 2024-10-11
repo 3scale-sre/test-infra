@@ -2,6 +2,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
+  labels:
+    app.kubernetes.io/name: prow-controller-manager
   name: prow-controller-manager
   namespace: prow
 rules:

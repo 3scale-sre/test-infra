@@ -16,15 +16,14 @@ spec:
       labels:
         app.kubernetes.io/name: sinker
     spec:
+      affinity: {}
       containers:
         - args:
             - "--config-path=/etc/config/config.yaml"
           #- '--health-port=8081'
-          image: gcr.io/k8s-prow/sinker:v20221102-f0b00eafb2
+          image: quay.io/prow/sinker:kustomization-overlay
           livenessProbe:
             failureThreshold: 3
-            tcpSocket:
-              port: 9090
             # httpGet:
             #   path: /healthz
             #   port: 8081
@@ -32,6 +31,8 @@ spec:
             initialDelaySeconds: 25
             periodSeconds: 10
             successThreshold: 1
+            tcpSocket:
+              port: 9090
             timeoutSeconds: 1
           name: sinker
           ports:
@@ -46,8 +47,6 @@ spec:
               protocol: TCP
           readinessProbe:
             failureThreshold: 3
-            tcpSocket:
-              port: 9090
             # httpGet:
             #   path: /healthz
             #   port: 8081
@@ -55,6 +54,8 @@ spec:
             initialDelaySeconds: 25
             periodSeconds: 10
             successThreshold: 1
+            tcpSocket:
+              port: 9090
             timeoutSeconds: 1
           resources:
             limits:

@@ -16,6 +16,7 @@ spec:
       labels:
         app.kubernetes.io/name: prow-controller-manager
     spec:
+      affinity: {}
       containers:
         - args:
             - "--dry-run=false"
@@ -25,11 +26,9 @@ spec:
             - "--github-endpoint=https://api.github.com"
             - "--enable-controller=plank"
           #- '--health-port=8081'
-          image: gcr.io/k8s-prow/prow-controller-manager:v20221102-f0b00eafb2
+          image: quay.io/prow/prow-controller-manager:kustomization-overlay
           livenessProbe:
             failureThreshold: 3
-            tcpSocket:
-              port: 9090
             # httpGet:
             #   path: /healthz
             #   port: 8081
@@ -37,6 +36,8 @@ spec:
             initialDelaySeconds: 25
             periodSeconds: 30
             successThreshold: 1
+            tcpSocket:
+              port: 9090
             timeoutSeconds: 1
           name: prow-controller-manager
           ports:
@@ -51,8 +52,6 @@ spec:
               protocol: TCP
           readinessProbe:
             failureThreshold: 3
-            tcpSocket:
-              port: 9090
             # httpGet:
             #   path: /healthz
             #   port: 8081
@@ -60,6 +59,8 @@ spec:
             initialDelaySeconds: 25
             periodSeconds: 30
             successThreshold: 1
+            tcpSocket:
+              port: 9090
             timeoutSeconds: 1
           resources:
             limits:
