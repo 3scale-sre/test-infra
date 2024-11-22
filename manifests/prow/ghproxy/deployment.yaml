@@ -5,7 +5,6 @@ metadata:
   labels:
     app.kubernetes.io/name: ghproxy
   name: ghproxy
-  namespace: prow
 spec:
   replicas: 1
   selector:

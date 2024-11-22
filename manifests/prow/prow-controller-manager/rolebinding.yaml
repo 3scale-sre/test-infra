@@ -5,7 +5,6 @@ metadata:
   labels:
     app.kubernetes.io/name: prow-controller-manager
   name: prow-controller-manager
-  namespace: prow
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role

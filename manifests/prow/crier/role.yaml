@@ -5,7 +5,6 @@ metadata:
   labels:
     app.kubernetes.io/name: crier
   name: crier
-  namespace: prow
 rules:
   - apiGroups:
       - prow.k8s.io

@@ -4,6 +4,7 @@ commonAnnotations:
   app.kubernetes.io/environment: pro-base
   app.kubernetes.io/managed-by: argocd
 kind: Kustomization
+namespace: prow
 labels:
   - includeSelectors: true
     pairs:

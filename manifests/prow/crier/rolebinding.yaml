@@ -5,7 +5,6 @@ metadata:
   labels:
     app.kubernetes.io/name: crier
   name: crier
-  namespace: prow
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -13,4 +12,3 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: crier
-    namespace: prow

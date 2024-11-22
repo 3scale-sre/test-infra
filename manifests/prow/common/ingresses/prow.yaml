@@ -9,7 +9,6 @@ metadata:
     app.kubernetes.io/name: prow
     type: internal
   name: prow
-  namespace: prow
 spec:
   ingressClassName: openshift-default
   rules:

@@ -10,7 +10,6 @@ metadata:
     app.kubernetes.io/name: prow-hook
     type: external
   name: prow-hook
-  namespace: prow
 spec:
   ingressClassName: openshift-external
   rules:
