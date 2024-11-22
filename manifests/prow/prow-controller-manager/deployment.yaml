@@ -24,6 +24,7 @@ spec:
             - "--github-endpoint=http://ghproxy"
             - "--github-endpoint=https://api.github.com"
             - "--enable-controller=plank"
+            - "--kubeconfig=/etc/kubeconfig/config"
           #- '--health-port=8081'
           image: quay.io/prow/prow-controller-manager:kustomization-overlay
           livenessProbe:
@@ -69,6 +70,9 @@ spec:
               cpu: 10m
               memory: 128M
           volumeMounts:
+            - mountPath: /etc/kubeconfig
+              name: kubeconfig
+              readOnly: true
             - mountPath: /etc/github
               name: github-token
               readOnly: true
@@ -77,6 +81,13 @@ spec:
               readOnly: true
       serviceAccountName: prow-controller-manager
       volumes:
+        - name: kubeconfig
+          secret:
+            defaultMode: 420
+            items:
+              - key: kubeconfig
+                path: config
+            secretName: prow-controller-manager
         - name: github-token
           secret:
             items:
