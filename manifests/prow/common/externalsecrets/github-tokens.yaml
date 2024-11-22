@@ -5,10 +5,16 @@ metadata:
 spec:
   data:
     - remoteRef:
+        conversionStrategy: Default
+        decodingStrategy: None
+        metadataPolicy: None
         key: kubernetes/pro-base/rosa/prow/github-tokens
         property: oauth
       secretKey: oauth
     - remoteRef:
+        conversionStrategy: Default
+        decodingStrategy: None
+        metadataPolicy: None
         key: kubernetes/pro-base/rosa/prow/github-tokens
         property: hmac
       secretKey: hmac
