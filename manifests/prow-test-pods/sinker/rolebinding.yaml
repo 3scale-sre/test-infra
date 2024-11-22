@@ -2,13 +2,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: prow-controller-manager
-  namespace: prow-test-pods
+  name: sinker
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: prow-controller-manager
+  name: sinker
 subjects:
   - kind: ServiceAccount
-    name: prow-controller-manager
+    name: sinker
     namespace: prow

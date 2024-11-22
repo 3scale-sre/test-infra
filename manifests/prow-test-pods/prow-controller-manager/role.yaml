@@ -2,8 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: sinker
-  namespace: prow-test-pods
+  name: prow-controller-manager
 rules:
   - apiGroups:
       - ""
@@ -13,5 +12,5 @@ rules:
       - delete
       - list
       - watch
-      - get
+      - create
       - patch
