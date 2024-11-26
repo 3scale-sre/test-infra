@@ -5,8 +5,8 @@ metadata:
   name: prow-controller-manager
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: prow-controller-manager
+  kind: ClusterRole
+  name: admin
 subjects:
   - kind: ServiceAccount
     name: prow-controller-manager
