@@ -4,22 +4,60 @@ commonAnnotations:
   app.kubernetes.io/environment: pro-base
   app.kubernetes.io/managed-by: argocd
 kind: Kustomization
+namespace: prow
 labels:
-- includeSelectors: true
-  pairs:
-    app.kubernetes.io/part-of: prow
+  - includeSelectors: true
+    pairs:
+      app.kubernetes.io/part-of: prow
+images:
+  - name: quay.io/prow/crier
+    newTag: v20241011-24e765300-dirty
+  - name: quay.io/prow/deck
+    newTag: v20241011-24e765300-dirty
+  - name: quay.io/prow/ghproxy
+    newTag: v20241011-24e765300-dirty
+  - name: quay.io/prow/hook
+    newTag: v20241011-24e765300-dirty
+  - name: quay.io/prow/horologium
+    newTag: v20241011-24e765300-dirty
+  - name: quay.io/prow/prow-controller-manager
+    newTag: v20241011-24e765300-dirty
+  - name: quay.io/prow/sinker
+    newTag: v20241011-24e765300-dirty
+  - name: quay.io/prow/status-reconciler
+    newTag: v20241011-24e765300-dirty
+  - name: quay.io/prow/tide
+    newTag: v20241011-24e765300-dirty
+patches:
+  - patch: |-
+
+      - op: add
+        path: /spec/template/spec/tolerations
+        value:
+          - key: kubernetes.io/arch
+            value: arm64
+
+      - op: add
+        path: /spec/template/spec/affinity/nodeAffinity
+        value:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              preference:
+                matchExpressions:
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values: [arm64]
+
+    target:
+      kind: Deployment
 resources:
-- clusterroles
-- configmaps
-- consolelink.yaml
-- crds
-- deployments
-- externalsecrets
-- ingresses
-- namespaces
-- persistenvolumeclaim
-- probes
-- rolebindings
-- roles
-- serviceaccount
-- services
+  - common
+  - crier
+  - deck
+  - ghproxy
+  - hook
+  - horologium
+  - prow-controller-manager
+  - sinker
+  - statusreconciler
+  - tide

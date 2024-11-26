@@ -3,10 +3,16 @@ commonAnnotations:
   app.kubernetes.io/created-by: argocd
   app.kubernetes.io/environment: pro-base
   app.kubernetes.io/managed-by: argocd
-commonLabels:
-  app.kubernetes.io/name: prow-jobs
+labels:
+  - includeSelectors: true
+    pairs:
+      app.kubernetes.io/part-of: prow
+      app.kubernetes.io/name: prow-jobs
 kind: Kustomization
+namespace: prow-test-pods
 resources:
-  - externalsecrets
-  - rolebindings
-  - roles
+  - common
+  - crier
+  - deck
+  - prow-controller-manager
+  - sinker

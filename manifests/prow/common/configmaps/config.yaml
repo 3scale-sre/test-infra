@@ -1,0 +1,84 @@
+---
+apiVersion: v1
+data:
+  config.yaml: |
+    prowjob_namespace: prow
+    pod_namespace: prow-test-pods
+
+    in_repo_config:
+      enabled:
+        "*": true
+
+    deck:
+     spyglass:
+       lenses:
+       - lens:
+           name: metadata
+         required_files:
+         - started.json|finished.json
+       - lens:
+           config:
+           name: buildlog
+         required_files:
+         - build-log.txt
+       - lens:
+           name: junit
+         required_files:
+         - .*/junit.*\.xml
+       - lens:
+           name: podinfo
+         required_files:
+         - podinfo.json
+
+    plank:
+      job_url_prefix_config:
+        "*": https://prow.mgmt.3sca.net/view/
+      report_templates:
+        '*': >-
+            [Full PR test history](https://prow.mgmt.3sca.net/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}).
+            [Your PR dashboard](https://prow.mgmt.3sca.net/pr?query=is:pr+state:open+author:{{with
+            index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}).
+      default_decoration_configs:
+        "*":
+          gcs_configuration:
+            bucket: s3://3scale-mgmt-prow
+            path_strategy: explicit
+          s3_credentials_secret: s3-credentials
+          utility_images:
+            clonerefs: quay.io/prow/clonerefs:v20241011-24e765300-dirty
+            entrypoint: quay.io/prow/entrypoint:v20241011-24e765300-dirty
+            initupload: quay.io/prow/initupload:v20241011-24e765300-dirty
+            sidecar: quay.io/prow/sidecar:v20241011-24e765300-dirty
+
+    tide:
+      queries:
+      - labels:
+        - lgtm
+        - approved
+        missingLabels:
+        - needs-rebase
+        - do-not-merge/hold
+        - do-not-merge/work-in-progress
+        - do-not-merge/invalid-owners-file
+        orgs:
+        - 3scale
+        - 3scale-ops
+
+    decorate_all_jobs: true
+    periodics:
+    - interval: 4h
+      agent: kubernetes
+      name: echo-test
+      spec:
+        containers:
+        - image: alpine
+          command: ["/bin/date"]
+
+    sinker:
+      resync_period: 1h
+      max_prowjob_age: 48h
+      max_pod_age: 48h
+      terminated_pod_ttl: 5m
+kind: ConfigMap
+metadata:
+  name: config

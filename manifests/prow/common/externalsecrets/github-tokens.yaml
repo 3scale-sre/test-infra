@@ -1,0 +1,28 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: github-tokens
+spec:
+  data:
+    - remoteRef:
+        conversionStrategy: Default
+        decodingStrategy: None
+        metadataPolicy: None
+        key: kubernetes/pro-base/rosa/prow/github-tokens
+        property: oauth
+      secretKey: oauth
+    - remoteRef:
+        conversionStrategy: Default
+        decodingStrategy: None
+        metadataPolicy: None
+        key: kubernetes/pro-base/rosa/prow/github-tokens
+        property: hmac
+      secretKey: hmac
+  refreshInterval: 1m0s
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: vault-mgmt
+  target:
+    creationPolicy: Owner
+    deletionPolicy: Retain
+    name: github-tokens

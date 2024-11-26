@@ -1,0 +1,119 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: hook
+  name: hook
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hook
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hook
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: hook
+                topologyKey: kubernetes.io/hostname
+              weight: 100
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: hook
+                topologyKey: kubernetes.io/hostname
+              weight: 5
+      containers:
+        - args:
+            - "--dry-run=false"
+            - "--config-path=/etc/config/config.yaml"
+            - "--github-token-path=/etc/github/token"
+            - "--github-endpoint=http://ghproxy"
+            - "--github-endpoint=https://api.github.com"
+          image: quay.io/prow/hook:kustomization-overlay
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            successThreshold: 1
+            timeoutSeconds: 600
+          name: hook
+          ports:
+            - containerPort: 8888
+              name: http
+              protocol: TCP
+            - containerPort: 8081
+              name: health
+              protocol: TCP
+            - containerPort: 6060
+              name: pprof
+              protocol: TCP
+            - containerPort: 9090
+              name: metrics
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            successThreshold: 1
+            timeoutSeconds: 600
+          resources:
+            limits:
+              cpu: 500m
+              memory: 96M
+            requests:
+              cpu: 5m
+              memory: 48M
+          volumeMounts:
+            - mountPath: /etc/webhook
+              name: hmac-token
+              readOnly: true
+            - mountPath: /etc/github
+              name: github-token
+              readOnly: true
+            - mountPath: /etc/config
+              name: config
+              readOnly: true
+            - mountPath: /etc/plugins
+              name: plugins
+              readOnly: true
+      serviceAccountName: hook
+      terminationGracePeriodSeconds: 180
+      volumes:
+        - name: hmac-token
+          secret:
+            items:
+              - key: hmac
+                path: hmac
+            secretName: github-tokens
+        - name: github-token
+          secret:
+            items:
+              - key: oauth
+                path: token
+            secretName: github-tokens
+        - configMap:
+            name: config
+          name: config
+        - configMap:
+            name: plugins
+          name: plugins
