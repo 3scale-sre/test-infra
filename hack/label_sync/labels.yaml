@@ -22,6 +22,11 @@ default:
       addedBy: anyone
       previously:
         - name: bug
+    - name: kind/fix
+      description: Categorizes issue or PR as that fixes some issue.
+      color: c23b22
+      target: both
+      addedBy: anyone
     - name: kind/cleanup
       description: Categorizes issue or PR as related to cleaning up code, process, or technical debt.
       color: c7def8
