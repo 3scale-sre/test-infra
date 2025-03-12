@@ -64,24 +64,6 @@ data:
       - trigger
       - verify-owners
       - wip
-      3scale-sre/platform:
-      - approve
-      - assign
-      - blunderbuss
-      - mergecommitblocker
-      - help
-      - hold
-      - invalidcommitmsg
-      - label
-      - lgtm
-      - lifecycle
-      - owners-label
-      - require-matching-label
-      - retitle
-      - size
-      - trigger
-      - verify-owners
-      - wip
 
     require_matching_label:
       - missing_label: needs-kind
