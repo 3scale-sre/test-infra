@@ -234,7 +234,7 @@ orgs:
         addedBy: anyone
         previously:
           - name: layer/system
-  3scale-ops:
+  3scale-sre:
     labels:
       # Kind
       - name: kind/release
@@ -243,7 +243,7 @@ orgs:
         target: both
         addedBy: anyone
 repos:
-  3scale-ops/marin3r:
+  3scale-sre/marin3r:
     labels:
       # Test
       - color: b60205
