@@ -298,7 +298,7 @@ repos:
         color: EE0000
         target: both
         addedBy: anyone
-  3scale/platform:
+  3scale-sre/platform:
     labels:
       # Kind
       - name: kind/maintenance

@@ -49,5 +49,5 @@ run-3scale: check ## Runs the label sync againts a set of 3scale org repos
 		gcr.io/k8s-prow/label_sync:latest \
 			--config=/etc/config/labels.yaml \
 			--confirm=true \
-			--only=3scale/platform,3scale/3scale-saas \
+			--only=3scale-sre/platform,3scale/3scale-saas \
 			--token=/etc/github/oauth

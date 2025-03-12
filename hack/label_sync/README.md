@@ -15,7 +15,7 @@
 - [Labels that apply to all repos in 3scale-sre, for both issues and PRs](#labels-that-apply-to-all-repos-in-3scale-sre-for-both-issues-and-prs)
 - [Labels that apply to 3scale-sre/marin3r, only for PRs](#labels-that-apply-to-3scale-sremarin3r-only-for-prs)
 - [Labels that apply to 3scale/3scale-saas, for both issues and PRs](#labels-that-apply-to-3scale3scale-saas-for-both-issues-and-prs)
-- [Labels that apply to 3scale/platform, for both issues and PRs](#labels-that-apply-to-3scaleplatform-for-both-issues-and-prs)
+- [Labels that apply to 3scale-sre/platform, for both issues and PRs](#labels-that-apply-to-3scaleplatform-for-both-issues-and-prs)
 
 ## Intro
 
@@ -153,7 +153,7 @@ That list is available in the `label` configuration section inside the
 | <a id="env/stg-saas" href="#env/stg-saas">`env/stg-saas`</a> | Categorizes issue or PR as related to the stg-saas environment. | anyone   |             |
 | <a id="kind/deploy" href="#kind/deploy">`kind/deploy`</a>    | Categorizes issue or PR as related to a deploy.                 | anyone   |             |
 
-## Labels that apply to 3scale/platform, for both issues and PRs
+## Labels that apply to 3scale-sre/platform, for both issues and PRs
 
 | Name                                                                        | Description                                                                                                                              | Added By | Prow Plugin |
 | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |

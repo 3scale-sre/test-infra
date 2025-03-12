@@ -64,7 +64,7 @@ data:
       - trigger
       - verify-owners
       - wip
-      3scale/platform:
+      3scale-sre/platform:
       - approve
       - assign
       - blunderbuss
