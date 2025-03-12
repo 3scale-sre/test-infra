@@ -23,9 +23,9 @@ jobs:
         echo "${{ secrets.GH_TOKEN_LABEL_SYNC }}" > ./secrets/oauth
       working-directory: ./hack/label_sync/
 
-    - name: Apply labels to 3scale-ops repos
+    - name: Apply labels to 3scale-sre repos
       working-directory: ./hack/label_sync/
-      run: make run-3scale-ops
+      run: make run-3scale-sre
 
     - name: Apply labels to 3scale repos
       working-directory: ./hack/label_sync/

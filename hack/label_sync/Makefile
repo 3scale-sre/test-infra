@@ -9,7 +9,7 @@ help: ## Prints this help
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-run: run-3scale-ops run-3scale ## Runs the label sync against 3scale-ops and 3scale repos
+run: run-3scale-sre run-3scale ## Runs the label sync against 3scale-sre and 3scale repos
 
 check: ## Checks if the required files are present
 	@test -f $(GITHUB_OAUTH_FILE) \
@@ -17,7 +17,7 @@ check: ## Checks if the required files are present
 	@test -f $(LABELS_FILE) \
 		|| { echo "$(LABELS_FILE) not found."; exit 1; }
 
-docs: ## Runs the label sync against 3scale-ops entire org
+docs: ## Runs the label sync against 3scale-sre entire org
 	docker run \
 		--rm \
 		--volume $(GITHUB_OAUTH_FILE):/etc/github/oauth \
@@ -30,7 +30,7 @@ docs: ## Runs the label sync against 3scale-ops entire org
 			--docs-template=/tmp/labels.md.tpl \
 			--docs-output=/tmp/labels.md
 
-run-3scale-ops: check ## Runs the label sync against 3scale-ops entire org
+run-3scale-sre: check ## Runs the label sync against 3scale-sre entire org
 	docker run \
 		--rm \
 		--volume $(GITHUB_OAUTH_FILE):/etc/github/oauth \
@@ -38,7 +38,7 @@ run-3scale-ops: check ## Runs the label sync against 3scale-ops entire org
 		gcr.io/k8s-prow/label_sync:latest \
 			--config=/etc/config/labels.yaml \
 			--confirm=true \
-			--orgs=3scale-ops \
+			--orgs=3scale-sre \
 			--token=/etc/github/oauth
 
 run-3scale: check ## Runs the label sync againts a set of 3scale org repos
@@ -49,5 +49,5 @@ run-3scale: check ## Runs the label sync againts a set of 3scale org repos
 		gcr.io/k8s-prow/label_sync:latest \
 			--config=/etc/config/labels.yaml \
 			--confirm=true \
-			--only=3scale/platform,3scale/3scale-saas \
+			--only=3scale-sre/platform,3scale/3scale-saas \
 			--token=/etc/github/oauth

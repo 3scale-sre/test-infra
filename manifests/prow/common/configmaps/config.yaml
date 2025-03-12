@@ -62,7 +62,7 @@ data:
         - do-not-merge/invalid-owners-file
         orgs:
         - 3scale
-        - 3scale-ops
+        - 3scale-sre
 
     decorate_all_jobs: true
     periodics:
