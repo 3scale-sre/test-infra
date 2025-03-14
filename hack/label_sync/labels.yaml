@@ -46,6 +46,11 @@ default:
       addedBy: anyone
       previously:
         - name: enhancement
+    - name: kind/config
+      description: Categorizes issue or PR as related to a new configuration.
+      color: ffa500
+      target: both
+      addedBy: anyone
     - name: kind/automation
       description: Categorizes issue or PR as related to CI/CD or an automation.
       color: c7def8
