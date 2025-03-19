@@ -1,5 +1,12 @@
----
-approvers:
-- 3scale-sre-approvers
-reviewers:
-- 3scale-sre-reviewers
+"approvers":
+- "team-apicast-approvers"
+- "team-engineering-approvers"
+- "team-ruby-approvers"
+- "team-sre-approvers"
+"labels":
+- "wg/sre"
+"reviewers":
+- "team-apicast-reviewers"
+- "team-engineering-reviewers"
+- "team-ruby-reviewers"
+- "team-sre-reviewers"
