@@ -1,4 +1,4 @@
-# 3scale GitHub Workflow & Testing Infrastructure
+# 3scale SRE GitHub Workflow & Testing Infrastructure
 
 This repository contains tools and configuration files for the testing and automation needs of the 3scale project.
 
