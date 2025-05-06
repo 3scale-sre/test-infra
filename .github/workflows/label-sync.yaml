@@ -1,8 +1,6 @@
 name: label-sync
 
 on:
-  workflow_dispatch:
-    inputs: {}
   schedule:
     - cron:  '0 0 * * *'
   push:
