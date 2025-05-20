@@ -11,13 +11,12 @@
 - [Labels that apply to all repos, for both issues and PRs](#labels-that-apply-to-all-repos-for-both-issues-and-prs)
 - [Labels that apply to all repos, only for issues](#labels-that-apply-to-all-repos-only-for-issues)
 - [Labels that apply to all repos, only for PRs](#labels-that-apply-to-all-repos-only-for-prs)
-- [Labels that apply to all repos in 3scale, for both issues and PRs](#labels-that-apply-to-all-repos-in-3scale-for-both-issues-and-prs)
 - [Labels that apply to all repos in 3scale-sre, for both issues and PRs](#labels-that-apply-to-all-repos-in-3scale-sre-for-both-issues-and-prs)
+- [Labels that apply to 3scale-sre/3scale-saas, for both issues and PRs](#labels-that-apply-to-3scale-sre3scale-saas-for-both-issues-and-prs)
+- [Labels that apply to 3scale-sre/3scale-saas, only for PRs](#labels-that-apply-to-3scale-sre3scale-saas-only-for-prs)
+- [Labels that apply to 3scale-sre/3scale-saas-dev, for both issues and PRs](#labels-that-apply-to-3scale-sre3scale-saas-dev-for-both-issues-and-prs)
 - [Labels that apply to 3scale-sre/marin3r, only for PRs](#labels-that-apply-to-3scale-sremarin3r-only-for-prs)
 - [Labels that apply to 3scale-sre/platform, for both issues and PRs](#labels-that-apply-to-3scale-sreplatform-for-both-issues-and-prs)
-- [Labels that apply to 3scale/3scale-saas, for both issues and PRs](#labels-that-apply-to-3scale3scale-saas-for-both-issues-and-prs)
-- [Labels that apply to 3scale/3scale-saas, only for PRs](#labels-that-apply-to-3scale3scale-saas-only-for-prs)
-- [Labels that apply to 3scale/3scale-saas-dev, for both issues and PRs](#labels-that-apply-to-3scale3scale-saas-dev-for-both-issues-and-prs)
 
 
 ## Intro
@@ -126,19 +125,38 @@ That list is available in the `label` configuration section inside the
 | <a id="approved" href="#approved">`approved`</a> | Indicates a PR has been approved by an approver from all required OWNERS files.| approvers |  [approve](https://git.k8s.io/test-infra/prow/plugins/approve) |
 | <a id="lgtm" href="#lgtm">`lgtm`</a> | Indicates that a PR is ready to be merged.| reviewers or members |  [lgtm](https://git.k8s.io/test-infra/prow/plugins/lgtm) |
 
-## Labels that apply to all repos in 3scale, for both issues and PRs
-
-| Name | Description | Added By | Prow Plugin |
-| ---- | ----------- | -------- | ----------- |
-| <a id="wg/apicast" href="#wg/apicast">`wg/apicast`</a> | Categorizes issue or PR as related to the apicast working group.| anyone | |
-| <a id="wg/backend" href="#wg/backend">`wg/backend`</a> | Categorizes issue or PR as related to the backend working group. <br><br> This was previously `layer/backend`, | anyone | |
-| <a id="wg/system" href="#wg/system">`wg/system`</a> | Categorizes issue or PR as related to the system working group. <br><br> This was previously `layer/system`, | anyone | |
-
 ## Labels that apply to all repos in 3scale-sre, for both issues and PRs
 
 | Name | Description | Added By | Prow Plugin |
 | ---- | ----------- | -------- | ----------- |
 | <a id="kind/release" href="#kind/release">`kind/release`</a> | Categorizes issue or PR as related to a new release.| anyone | |
+| <a id="wg/apicast" href="#wg/apicast">`wg/apicast`</a> | Categorizes issue or PR as related to the apicast working group.| anyone | |
+| <a id="wg/backend" href="#wg/backend">`wg/backend`</a> | Categorizes issue or PR as related to the backend working group. <br><br> This was previously `layer/backend`, | anyone | |
+| <a id="wg/system" href="#wg/system">`wg/system`</a> | Categorizes issue or PR as related to the system working group. <br><br> This was previously `layer/system`, | anyone | |
+
+## Labels that apply to 3scale-sre/3scale-saas, for both issues and PRs
+
+| Name | Description | Added By | Prow Plugin |
+| ---- | ----------- | -------- | ----------- |
+| <a id="env/common" href="#env/common">`env/common`</a> | Categorizes issue or PR as related shared across environments.| anyone | |
+| <a id="env/dev-eng" href="#env/dev-eng">`env/dev-eng`</a> | Categorizes issue or PR as related to the dev-env environment.| anyone | |
+| <a id="env/pro-base" href="#env/pro-base">`env/pro-base`</a> | Categorizes issue or PR as related to the pro-base environment.| anyone | |
+| <a id="env/pro-saas" href="#env/pro-saas">`env/pro-saas`</a> | Categorizes issue or PR as related to the pro-saas environment.| anyone | |
+| <a id="env/stg-saas" href="#env/stg-saas">`env/stg-saas`</a> | Categorizes issue or PR as related to the stg-saas environment.| anyone | |
+| <a id="kind/deploy" href="#kind/deploy">`kind/deploy`</a> | Categorizes issue or PR as related to a deploy.| anyone | |
+
+## Labels that apply to 3scale-sre/3scale-saas, only for PRs
+
+| Name | Description | Added By | Prow Plugin |
+| ---- | ----------- | -------- | ----------- |
+| <a id="ok-to-prod" href="#ok-to-prod">`ok-to-prod`</a> | Indicates a PR containing an image that has been approved and can be promoted to production.| approvers | |
+
+## Labels that apply to 3scale-sre/3scale-saas-dev, for both issues and PRs
+
+| Name | Description | Added By | Prow Plugin |
+| ---- | ----------- | -------- | ----------- |
+| <a id="env/dev-eng" href="#env/dev-eng">`env/dev-eng`</a> | Categorizes issue or PR as related to the dev-env environment.| anyone | |
+| <a id="kind/deploy" href="#kind/deploy">`kind/deploy`</a> | Categorizes issue or PR as related to a deploy.| anyone | |
 
 ## Labels that apply to 3scale-sre/marin3r, only for PRs
 
@@ -163,28 +181,4 @@ That list is available in the `label` configuration section inside the
 | <a id="layer/application" href="#layer/application">`layer/application`</a> | REMOVING. This will be deleted after 2021-04-15 00:00:00 +0000 UTC <br><br> Categorizes issue or PR as related to the application layer.| anyone | |
 | <a id="layer/routing" href="#layer/routing">`layer/routing`</a> | REMOVING. This will be deleted after 2021-04-15 00:00:00 +0000 UTC <br><br> Categorizes issue or PR as related to the routing layer.| anyone | |
 | <a id="layer/storage" href="#layer/storage">`layer/storage`</a> | REMOVING. This will be deleted after 2021-04-15 00:00:00 +0000 UTC <br><br> Categorizes issue or PR as related to the storage layer.| anyone | |
-
-## Labels that apply to 3scale/3scale-saas, for both issues and PRs
-
-| Name | Description | Added By | Prow Plugin |
-| ---- | ----------- | -------- | ----------- |
-| <a id="env/common" href="#env/common">`env/common`</a> | Categorizes issue or PR as related shared across environments.| anyone | |
-| <a id="env/dev-eng" href="#env/dev-eng">`env/dev-eng`</a> | Categorizes issue or PR as related to the dev-env environment.| anyone | |
-| <a id="env/pro-base" href="#env/pro-base">`env/pro-base`</a> | Categorizes issue or PR as related to the pro-base environment.| anyone | |
-| <a id="env/pro-saas" href="#env/pro-saas">`env/pro-saas`</a> | Categorizes issue or PR as related to the pro-saas environment.| anyone | |
-| <a id="env/stg-saas" href="#env/stg-saas">`env/stg-saas`</a> | Categorizes issue or PR as related to the stg-saas environment.| anyone | |
-| <a id="kind/deploy" href="#kind/deploy">`kind/deploy`</a> | Categorizes issue or PR as related to a deploy.| anyone | |
-
-## Labels that apply to 3scale/3scale-saas, only for PRs
-
-| Name | Description | Added By | Prow Plugin |
-| ---- | ----------- | -------- | ----------- |
-| <a id="ok-to-prod" href="#ok-to-prod">`ok-to-prod`</a> | Indicates a PR containing an image that has been approved and can be promoted to production.| approvers | |
-
-## Labels that apply to 3scale/3scale-saas-dev, for both issues and PRs
-
-| Name | Description | Added By | Prow Plugin |
-| ---- | ----------- | -------- | ----------- |
-| <a id="env/dev-eng" href="#env/dev-eng">`env/dev-eng`</a> | Categorizes issue or PR as related to the dev-env environment.| anyone | |
-| <a id="kind/deploy" href="#kind/deploy">`kind/deploy`</a> | Categorizes issue or PR as related to a deploy.| anyone | |
 
