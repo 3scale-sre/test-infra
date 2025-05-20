@@ -222,8 +222,14 @@ default:
       previously:
         - name: layer/operations
 orgs:
-  3scale:
+  3scale-sre:
     labels:
+      # Kind
+      - name: kind/release
+        description: Categorizes issue or PR as related to a new release.
+        color: 3CAB6C
+        target: both
+        addedBy: anyone
       # Working groups
       - name: wg/apicast
         description: Categorizes issue or PR as related to the apicast working group.
@@ -244,14 +250,6 @@ orgs:
         addedBy: anyone
         previously:
           - name: layer/system
-  3scale-sre:
-    labels:
-      # Kind
-      - name: kind/release
-        description: Categorizes issue or PR as related to a new release.
-        color: 3CAB6C
-        target: both
-        addedBy: anyone
 repos:
   3scale-sre/marin3r:
     labels:
@@ -268,7 +266,7 @@ repos:
         target: prs
         prowPlugin: trigger
         addedBy: anyone
-  3scale/3scale-saas:
+  3scale-sre/3scale-saas:
     labels:
       # Triggers
       - color: ff0800
@@ -306,6 +304,20 @@ repos:
       - name: env/pro-saas
         description: Categorizes issue or PR as related to the pro-saas environment.
         color: EE0000
+        target: both
+        addedBy: anyone
+  3scale-sre/3scale-saas-dev:
+    labels:
+      # Kind
+      - name: kind/deploy
+        description: Categorizes issue or PR as related to a deploy.
+        color: 3CAB6C
+        target: both
+        addedBy: anyone
+      # Env
+      - name: env/dev-eng
+        description: Categorizes issue or PR as related to the dev-env environment.
+        color: C2E0C6
         target: both
         addedBy: anyone
   3scale-sre/platform:
