@@ -308,6 +308,20 @@ repos:
         color: EE0000
         target: both
         addedBy: anyone
+  3scale/3scale-saas-dev:
+    labels:
+      # Kind
+      - name: kind/deploy
+        description: Categorizes issue or PR as related to a deploy.
+        color: 3CAB6C
+        target: both
+        addedBy: anyone
+      # Env
+      - name: env/dev-eng
+        description: Categorizes issue or PR as related to the dev-env environment.
+        color: C2E0C6
+        target: both
+        addedBy: anyone
   3scale-sre/platform:
     labels:
       # Kind
