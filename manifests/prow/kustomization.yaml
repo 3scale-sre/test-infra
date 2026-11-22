@@ -11,42 +11,48 @@ labels:
       app.kubernetes.io/part-of: prow
 images:
   - name: quay.io/prow/crier
-    newTag: v20241011-24e765300-dirty
+    newName: us-docker.pkg.dev/k8s-infra-prow/images/crier
+    newTag: v20261120-fb2ec8c30
+    digest: sha256:e59aff2b74377008b018479e31e118069eef2bbff500880e669c51d2b750f3b0
   - name: quay.io/prow/deck
-    newTag: v20241011-24e765300-dirty
+    newName: us-docker.pkg.dev/k8s-infra-prow/images/deck
+    newTag: v20261120-fb2ec8c30
+    digest: sha256:6472dc14c17ef67fa069266a62607400eee9ac3e961b8b3411c5e5bd1572fe71
   - name: quay.io/prow/ghproxy
-    newTag: v20241011-24e765300-dirty
+    newName: us-docker.pkg.dev/k8s-infra-prow/images/ghproxy
+    newTag: v20261120-fb2ec8c30
+    digest: sha256:52b8907a041205c8dafedf1c274fe7ef59ea7e73cc8cd060732b9bf28fd20791
   - name: quay.io/prow/hook
-    newTag: v20241011-24e765300-dirty
+    newName: us-docker.pkg.dev/k8s-infra-prow/images/hook
+    newTag: v20261120-fb2ec8c30
+    digest: sha256:e10513c907f5523aa2c6e21e701d22973d35fdc129a9674652d937906dd38297
   - name: quay.io/prow/horologium
-    newTag: v20241011-24e765300-dirty
+    newName: us-docker.pkg.dev/k8s-infra-prow/images/horologium
+    newTag: v20261120-fb2ec8c30
+    digest: sha256:60ad1bee367dc4ab017842a6f5b677963ee60aff3edd359150f71336d38db2f3
   - name: quay.io/prow/prow-controller-manager
-    newTag: v20241011-24e765300-dirty
+    newName: us-docker.pkg.dev/k8s-infra-prow/images/prow-controller-manager
+    newTag: v20261120-fb2ec8c30
+    digest: sha256:5c8ee0cc0e50233118a888df64d1257f45c26aba75e304e295bd55f133f23384
   - name: quay.io/prow/sinker
-    newTag: v20241011-24e765300-dirty
+    newName: us-docker.pkg.dev/k8s-infra-prow/images/sinker
+    newTag: v20261120-fb2ec8c30
+    digest: sha256:e8bfe3557a5effd6f2b4009a5ba21905ef9bd743d23ba2133b75db77b0b760a3
   - name: quay.io/prow/status-reconciler
-    newTag: v20241011-24e765300-dirty
+    newName: us-docker.pkg.dev/k8s-infra-prow/images/status-reconciler
+    newTag: v20261120-fb2ec8c30
+    digest: sha256:6385dd67c381794bc2bcbd3f17841ba2d3ddbffbbc4404ff70952a089054a08d
   - name: quay.io/prow/tide
-    newTag: v20241011-24e765300-dirty
+    newName: us-docker.pkg.dev/k8s-infra-prow/images/tide
+    newTag: v20261120-fb2ec8c30
+    digest: sha256:db078c0d316616dff90b259cf344885941f60860610e23046f8feb4fd1594617
 patches:
   - patch: |-
 
       - op: add
-        path: /spec/template/spec/tolerations
+        path: /spec/template/spec/nodeSelector
         value:
-          - key: kubernetes.io/arch
-            value: arm64
-
-      - op: add
-        path: /spec/template/spec/affinity/nodeAffinity
-        value:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              preference:
-                matchExpressions:
-                  - key: kubernetes.io/arch
-                    operator: In
-                    values: [arm64]
+          kubernetes.io/arch: amd64
 
     target:
       kind: Deployment
