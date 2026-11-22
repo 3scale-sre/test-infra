@@ -15,7 +15,6 @@ spec:
       labels:
         app.kubernetes.io/name: sinker
     spec:
-      affinity: {}
       containers:
         - args:
             - "--config-path=/etc/config/config.yaml"

@@ -15,7 +15,6 @@ spec:
       labels:
         app.kubernetes.io/name: prow-controller-manager
     spec:
-      affinity: {}
       containers:
         - args:
             - "--dry-run=false"

@@ -15,7 +15,6 @@ spec:
       labels:
         app.kubernetes.io/name: crier
     spec:
-      affinity: {}
       containers:
         - args:
             - "--blob-storage-workers=10"
