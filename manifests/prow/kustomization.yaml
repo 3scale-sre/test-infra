@@ -56,6 +56,26 @@ patches:
 
     target:
       kind: Deployment
+  # Align the generated ProwJob CRD with what apiextensions/v1 actually stores.
+  # The vendored CRD (controller-gen output) sets preserveUnknownFields: false and
+  # omits conversion; the API server drops the former and defaults the latter to
+  # strategy: None. Argo CD 3.x reports those defaulted fields as drift, so with
+  # selfHeal enabled the app re-applies the CRD on every reconcile. A merge-style
+  # patch removes the pruned field and states the default explicitly, which keeps
+  # the upstream CRD file untouched and survives automated image refreshes.
+  - patch: |-
+      apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      metadata:
+        name: prowjobs.prow.k8s.io
+      spec:
+        preserveUnknownFields: null
+        conversion:
+          strategy: None
+    target:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: prowjobs.prow.k8s.io
 resources:
   - common
   - crier
