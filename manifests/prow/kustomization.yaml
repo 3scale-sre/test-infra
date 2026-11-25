@@ -12,40 +12,40 @@ labels:
 images:
   - name: quay.io/prow/crier
     newName: us-docker.pkg.dev/k8s-infra-prow/images/crier
-    newTag: v20261123-4bd5c66c8
-    digest: sha256:6daa5132f259c164b46b1823d7a6aa59a8b5af6b6abf8163241d137ac87c066d
+    newTag: v20261124-5b5f4b60c
+    digest: sha256:1da5238bb88dc2e02d9d1df603590c547fbc5c3bb11d1f8cd77630f8fe5d8a5d
   - name: quay.io/prow/deck
     newName: us-docker.pkg.dev/k8s-infra-prow/images/deck
-    newTag: v20261123-4bd5c66c8
-    digest: sha256:46548a26cf55d5e3740fdac55ba7fbdaa4ce7fa4b8760feafb9de57c9bd1315f
+    newTag: v20261124-5b5f4b60c
+    digest: sha256:45614b5d2066a74c9143425b76d9dccf741c8fde8d779f3f74f11e5b1db26552
   - name: quay.io/prow/ghproxy
     newName: us-docker.pkg.dev/k8s-infra-prow/images/ghproxy
-    newTag: v20261123-4bd5c66c8
-    digest: sha256:78da05be0b39fed1d7ead2aa1901ec0cd0831a64ea6811949f2b52d8e2a9cf69
+    newTag: v20261124-5b5f4b60c
+    digest: sha256:84f4c2f08bd496151479c02e7c8adb0b68cbc79d3c9aebf3a618f621eb117310
   - name: quay.io/prow/hook
     newName: us-docker.pkg.dev/k8s-infra-prow/images/hook
-    newTag: v20261123-4bd5c66c8
-    digest: sha256:7d93859b7bbfc7da6987607301abc4108c1319a914be75c27d1026c1d10896bb
+    newTag: v20261124-5b5f4b60c
+    digest: sha256:306b2394c73263d2936b7ddfbcccc13213d2c6d3bd73a6e588034b03f1a80bc7
   - name: quay.io/prow/horologium
     newName: us-docker.pkg.dev/k8s-infra-prow/images/horologium
-    newTag: v20261123-4bd5c66c8
-    digest: sha256:f114b0e93fa8aadc6a434ee5107861cae8365d931fe7157c5e5c7e2e0ed0fa29
+    newTag: v20261124-5b5f4b60c
+    digest: sha256:d9daeca25d6c2c7c765b011fed5285ce1eb02308159e0d753cb63f72958b7fee
   - name: quay.io/prow/prow-controller-manager
     newName: us-docker.pkg.dev/k8s-infra-prow/images/prow-controller-manager
-    newTag: v20261123-4bd5c66c8
-    digest: sha256:679f98b45f8e4b8c3bf8ade5a0b0b152a4b54dcef575362b4529827775d7b8b7
+    newTag: v20261124-5b5f4b60c
+    digest: sha256:f3d2c9bf3d0ae0c6f7be19fd7f6eef6a84ba58e9d86c53311689a875e88dfe01
   - name: quay.io/prow/sinker
     newName: us-docker.pkg.dev/k8s-infra-prow/images/sinker
-    newTag: v20261123-4bd5c66c8
-    digest: sha256:572bb2eedbfa206fc538bb4b805ec8a5e2180a82882cc45a0f933a49774c33aa
+    newTag: v20261124-5b5f4b60c
+    digest: sha256:9a67cbf96f4b318b59c2d08ee4e88dd028bee50dd82d99696922ffa1e6d7fa9a
   - name: quay.io/prow/status-reconciler
     newName: us-docker.pkg.dev/k8s-infra-prow/images/status-reconciler
-    newTag: v20261123-4bd5c66c8
-    digest: sha256:ca3a2b3383563b23f8c85ac6668a3933348703decfc84ce5577f739d0469ba41
+    newTag: v20261124-5b5f4b60c
+    digest: sha256:a2b41fed526b7cebefb10791c7448ad1c40c85ea08948e76fca8f627fadf097a
   - name: quay.io/prow/tide
     newName: us-docker.pkg.dev/k8s-infra-prow/images/tide
-    newTag: v20261123-4bd5c66c8
-    digest: sha256:29e7a771626a9a69613cf56419d9a7a6126fc29913d8d61719806e22592091ce
+    newTag: v20261124-5b5f4b60c
+    digest: sha256:b7cf8c81c19c7d6896f5ab1db11d7009ea784c6435286af2dc03bcb606589e55
 patches:
   - patch: |-
 
